@@ -7,7 +7,7 @@ export function Footer(){
             <div className="col-lg-3 col-md-6 d-flex">
               <i className="bi bi-geo-alt icon" />
               <div className="address">
-                <h4></h4>
+                <h4>Address</h4>
                 <p>A108 Adam Street</p>
                 <p>New York, NY 535022</p>
                 <p />
