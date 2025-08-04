@@ -30,6 +30,12 @@ export function Header(){
             <li>
               <Link to="/agents">Agents</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
             {/* <li className="dropdown">
               <a href="#">
                 <span>Dropdown</span>{" "}

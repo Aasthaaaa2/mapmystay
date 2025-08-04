@@ -1,3 +1,5 @@
+import { Login } from "./components/auth/Login"
+import { Register } from "./components/auth/Register"
 import { Master } from "./components/layouts/Master"
 import { About } from "./components/pages/About"
 import { Agents } from "./components/pages/Agents"
@@ -10,6 +12,7 @@ import { ServiceDetails } from "./components/pages/ServiceDetails"
 import { Services } from "./components/pages/Services"
 import { StarterPage } from "./components/pages/StarterPage"
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import {ToastContainer} from "react-toastify"
 
 function App() {
   return (
@@ -24,10 +27,13 @@ function App() {
           <Route path="agents" element={<Agents/>}></Route>
           <Route path="contact" element={<Contact/>}></Route>
           <Route path="contact" element={<Contact/>}></Route>
+          <Route path="login" element={<Login/>}></Route>
+          <Route path="register" element={<Register/>}></Route>
         </Route>
         <Route path="*" element={<Error/>}></Route>
       </Routes>
     </BrowserRouter>
+    <ToastContainer/>
     </>
   )
 }
