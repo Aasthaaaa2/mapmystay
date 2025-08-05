@@ -3,13 +3,13 @@ return(
 <>
   <main className="main">
     {/* Page Title */}
-    <div className="page-title" data-aos="fade">
+    <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
       <div className="heading">
         <div className="container">
           <div className="row d-flex justify-content-center text-center">
             <div className="col-lg-8">
-              <h1>About</h1>
-              <p className="mb-0">
+              <h1 className="text-light">About</h1>
+              <p className="mb-0 text-light">
                 MapMyStay is a comprehensive web-based platform designed to simplify the process of finding, managing and booking Paying Guest(PG) accommodations.
                 The system connects Pg owners, Users, and Administrators on a single platform to ensure smooth operations, transparent management and a hassle-free booking experience.
               </p>

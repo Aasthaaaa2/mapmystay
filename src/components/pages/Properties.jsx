@@ -3,13 +3,13 @@ export function Properties(){
     <>
       <main className="main">
         {/* Page Title */}
-        <div className="page-title" data-aos="fade">
+        <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
           <div className="heading">
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1>Properties</h1>
-                  <p className="mb-0">
+                  <h1 className="text-light">Properties</h1>
+                  <p className="mb-0 text-light">
                     Explore a wide range of verified PG accomodations across cities. Whether you are a student or working professional, find a stay that fits your comfort and budget. Use filters to refine your search based on location, rent, and amenties.
                   </p>
                 </div>

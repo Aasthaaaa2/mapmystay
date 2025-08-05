@@ -11,26 +11,16 @@ export function Register(){
     <>
       <main className="main">
       {/* Page Title */}
-      <div className="page-title" data-aos="fade">
+      <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')", height:"450px"}}>
         <div className="heading">
           <div className="container">
             <div className="row d-flex justify-content-center text-center">
               <div className="col-lg-8">
-                <h1>Register</h1>
+                <h1 className="text-light">Register</h1>
               </div>
             </div>
           </div>
         </div>
-        <nav className="breadcrumbs">
-          <div className="container">
-            <ol>
-              <li>
-                <a href="index.html">Home</a>
-              </li>
-              <li className="current">Register</li>
-            </ol>
-          </div>
-        </nav>
       </div>
       <div className="col-lg-6 border border-black-700 p-4 m-5 mx-auto">
         <form

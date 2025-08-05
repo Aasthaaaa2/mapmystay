@@ -3,13 +3,13 @@ export function Agents(){
     <>
       <main className="main">
         {/* Page Title */}
-        <div className="page-title" data-aos="fade">
+        <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
           <div className="heading">
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1>Agents</h1>
-                  <p className="mb-0">
+                  <h1 className="text-light">Agents</h1>
+                  <p className="mb-0 text-light">
                     Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
                     quo odio sint voluptas consequatur ut a odio voluptatem. Sit
                     dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit
