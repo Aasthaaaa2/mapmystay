@@ -1,12 +1,37 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
+
 export function Header(){
+  let isLogin=sessionStorage.getItem("isLogin")
+
+  let nav=useNavigate()
+  const logout=()=>{
+    Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, Logout!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            sessionStorage.clear()
+            nav("/login")
+            Swal.fire({
+              title: "Logout!",
+              icon: "success"
+            });
+          }
+        });
+  }
   return(
     <>
       <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
         <a href="index.html" className="logo d-flex align-items-center">
           {/* Uncomment the line below if you also wish to use an image logo */}
-          {/* <img src="assets/img/logo.png" alt=""> */}
+          {/* <img src="assets/img/logo.png" alt=""/> */}
           <h1 className="sitename">
             <span>MapMyStay</span>
           </h1>
@@ -29,9 +54,6 @@ export function Header(){
             </li>
             <li>
               <Link to="/agents">Agents</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/register">Register</Link>
@@ -82,6 +104,16 @@ export function Header(){
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            {
+              isLogin?
+              <li>
+                <Link to={"#"} onClick={logout}>Logout</Link>
+              </li>
+              :
+              <li>
+                <Link to={"/login"}>Login</Link>
+              </li>
+            }
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list" />
         </nav>

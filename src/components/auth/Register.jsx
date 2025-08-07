@@ -1,22 +1,53 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { auth, db } from "../Firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, Timestamp } from "firebase/firestore"
 
 export function Register(){
   const[name,setName]=useState("")
-  const[email,setEmail]=useState("example@gmail.com")
+  const[email,setEmail]=useState("")
   const[contact,setContact]=useState()
   const[password,setPassword]=useState("")
-  const[confirmPassword,setConfirmPassword]=useState("")
+  const[age,setAge]=useState()
+  const[gender,setGender]=useState("")
+
+  const handleForm=(e)=>{
+    e.preventDefault()
+    createUserWithEmailAndPassword(auth,email,password)
+    .then((userCred)=>{
+      toast.success("registered successfully")
+      saveData(userCred.user.uid)
+    })
+    .catch((err)=>{
+      toast.error(err.message)
+    })
+  }
+
+  const nav=useNavigate()
+  const saveData=async(userId)=>{
+    let data={
+      name,
+      email,
+      password,
+      userType:3,
+      status:true,
+      createAt:Timestamp.now()
+    }
+    await setDoc(doc(db,"users",userId),data)
+    nav("/")
+  }
   return(
     <>
-      <main className="main">
+    <main className="main">
       {/* Page Title */}
       <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')", height:"450px"}}>
         <div className="heading">
           <div className="container">
             <div className="row d-flex justify-content-center text-center">
               <div className="col-lg-8">
-                <h1 className="text-light">Register</h1>
+                <h1 className="text-light pt-5 mt-4">Register</h1>
               </div>
             </div>
           </div>
@@ -29,6 +60,7 @@ export function Register(){
           className="php-email-form"
           data-aos="fade-up"
           data-aos-delay={200}
+          onSubmit={handleForm}
         >
           <div className="row gy-4">
             <div className="col-md-12">
@@ -36,7 +68,7 @@ export function Register(){
                 type="text"
                 name="name"
                 className="form-control"
-                placeholder="Your Name"
+                placeholder="Name"
                 required=""
                 value={name}
                 onChange={(e)=>{
@@ -49,7 +81,7 @@ export function Register(){
                 type="email"
                 className="form-control"
                 name="email"
-                placeholder="Your Email"
+                placeholder="Email"
                 required=""
                 value={email}
                 onChange={(e)=>{
@@ -59,10 +91,10 @@ export function Register(){
             </div>
             <div className="col-md-12">
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 name="contact"
-                placeholder="contact"
+                placeholder="Contact"
                 required=""
                 minLength={10}
                 maxLength={10}
@@ -87,16 +119,40 @@ export function Register(){
             </div>
             <div className="col-md-12">
               <input
-                type="password"
+                type="number"
                 className="form-control"
-                name="password"
-                placeholder="Confirm password"
+                name="age"
+                placeholder="Age"
                 required=""
-                value={confirmPassword}
+                value={age}
                 onChange={(e)=>{
-                  setConfirmPassword(e.target.value)
+                  setAge(e.target.value)
                 }}
               />
+            </div>
+            <div className="row mt-4">
+              <div className="col-md-2">
+                <input
+                  type="radio"
+                  name="gender"
+                  required=""
+                  value={gender}
+                  onChange={(e)=>{
+                    setGender(e.target.value)
+                  }}
+                /> Male
+              </div>
+              <div className="col-md-2">
+                <input
+                  type="radio"
+                  name="gender"
+                  required=""
+                  value={gender}
+                  onChange={(e)=>{
+                    setGender(e.target.value)
+                  }}
+                /> Female
+              </div>
             </div>
             <div className="col-md-12 ">
               <div className="loading">Loading</div>

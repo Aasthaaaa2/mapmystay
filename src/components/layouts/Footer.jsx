@@ -1,15 +1,15 @@
 export function Footer(){
   return(
     <>
-        <footer id="footer" className="footer light-background">
+        <footer id="footer" className="footer light-background mt-5 pt-5">
         <div className="container">
           <div className="row gy-3">
             <div className="col-lg-3 col-md-6 d-flex">
               <i className="bi bi-geo-alt icon" />
               <div className="address">
                 <h4>Address</h4>
-                <p>A108 Adam Street</p>
-                <p>New York, NY 535022</p>
+                <p>Sector 60 Market</p>
+                <p>Mohali, Punjab -160071</p>
                 <p />
               </div>
             </div>
@@ -18,9 +18,9 @@ export function Footer(){
               <div>
                 <h4>Contact</h4>
                 <p>
-                  <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+                  <strong>Phone:</strong> <span>9978112233</span>
                   <br />
-                  <strong>Email:</strong> <span>info@example.com</span>
+                  <strong>Email:</strong> <span>mapmystay@gmail.com</span>
                   <br />
                 </p>
               </div>
@@ -58,7 +58,6 @@ export function Footer(){
         <div className="container copyright text-center mt-4">
           <p>
             © <span>Copyright</span>{" "}
-            <strong className="px-1 sitename">EstateAgency</strong>{" "}
             <span>All Rights Reserved</span>
           </p>
           <div className="credits">
@@ -66,7 +65,7 @@ export function Footer(){
             {/* You can delete the links only if you've purchased the pro version. */}
             {/* Licensing information: https://bootstrapmade.com/license/ */}
             {/* Purchase the pro version with working PHP/AJAX contact form: [buy-url] */}
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://bootstrapmade.com/">MapMyStay</a>
           </div>
         </div>
       </footer>

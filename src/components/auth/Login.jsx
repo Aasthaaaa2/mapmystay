@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from "firebase/auth";
-import { auth } from "../Firebase";
+import { auth, db } from "../Firebase";
+import { doc,getDoc } from "firebase/firestore";
 
 export function Login(){
   const[email,setEmail]=useState("")
@@ -12,21 +13,41 @@ export function Login(){
     e.preventDefault()
     signInWithEmailAndPassword(auth,email,password)
     .then((userCred)=>{
-      console.log(userCred);
-      toast.success("Login successfully");
-      nav("/")
+      getUserData(userCred.user.uid)
     })
     .catch((err)=>{
       toast.error(err.message)
-      console.log(err);
     })
+  }
+
+  const getUserData=async(userId)=>{
+    let userDoc=await getDoc(doc(db,"users",userId))
+    let userData=userDoc.data()
+    if(userData?.status == true){
+      sessionStorage.setItem("isLogin",true)
+      sessionStorage.setItem("name",userData?.name)
+      sessionStorage.setItem("email",userData?.email)
+      sessionStorage.setItem("userType",userData?.userType)
+      sessionStorage.setItem("userId",userId)
+      toast.success("Login successfully");
+      if(userData?.userType==1){
+        nav("/admin")
+      } else if(userData?.userType==2){
+        nav("/pgOwner")
+      } else {
+        nav("/")
+      }
+    } else{
+      toast.error("Account is Blocked")
+    }
   }
   const googleSignUp=()=>{
     let provider=new GoogleAuthProvider()
     signInWithPopup(auth,provider)
     .then((userCred)=>{
-      toast.success("Login successfully")
-      nav("/")
+      // toast.success("Login successfully")
+      // nav("/")
+      getUserData()
     })
     .catch((err)=>{
       toast.error(err.message);
@@ -41,7 +62,7 @@ export function Login(){
               <div className="container">
                 <div className="row d-flex justify-content-center text-center">
                   <div className="col-lg-2">
-                    <h1 className="text-light" >Login</h1>
+                    <h1 className="text-light pt-5 mt-4" >Login</h1>
                   </div>
                 </div>
               </div>
@@ -65,7 +86,7 @@ export function Login(){
                       type="email"
                       className="form-control"
                       name="email"
-                      placeholder="Your Email"
+                      placeholder="Email"
                       required=""
                       value={email}
                       onChange={(e)=>{
@@ -78,7 +99,7 @@ export function Login(){
                       type="password"
                       className="form-control"
                       name="password"
-                      placeholder="Enter Password"
+                      placeholder="Password"
                       required=""
                       value={password}
                       onChange={(e)=>{

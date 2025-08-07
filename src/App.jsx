@@ -1,6 +1,8 @@
 import { Login } from "./components/auth/Login"
 import { Register } from "./components/auth/Register"
 import { Master } from "./components/layouts/Master"
+import { MasterPgOwner } from "./components/layouts/MasterPgOwner"
+import { MasterAdmin } from "./components/layouts/MasterAdmin"
 import { About } from "./components/pages/About"
 import { Agents } from "./components/pages/Agents"
 import { Contact } from "./components/pages/Contact"
@@ -13,6 +15,7 @@ import { Services } from "./components/pages/Services"
 import { StarterPage } from "./components/pages/StarterPage"
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import {ToastContainer} from "react-toastify"
+import { RegisterPgOwner } from "./components/auth/RegisterPgOwner"
 
 function App() {
   return (
@@ -29,8 +32,16 @@ function App() {
           <Route path="contact" element={<Contact/>}></Route>
           <Route path="login" element={<Login/>}></Route>
           <Route path="register" element={<Register/>}></Route>
+          <Route path="/regPgOwner" element={<RegisterPgOwner/>}></Route>
         </Route>
-        <Route path="*" element={<Error/>}></Route>
+
+        {/* PgOwner */}
+        <Route path="/pgOwner" element={<MasterPgOwner/>}></Route>
+
+       {/* Admin */}
+       <Route path="/admin" element={<MasterAdmin/>}></Route>
+
+      <Route path="*" element={<Error/>}></Route>
       </Routes>
     </BrowserRouter>
     <ToastContainer/>
