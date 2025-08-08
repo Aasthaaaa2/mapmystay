@@ -39,7 +39,7 @@ export function HeaderPgOwner(){
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/pgOwner">Dashboard</Link>
             </li>
             <li>
               <Link to="/propertiesAdd">Add PG</Link>

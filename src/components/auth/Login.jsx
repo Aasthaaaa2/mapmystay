@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth, db } from "../Firebase";
-import { doc,getDoc } from "firebase/firestore";
+import { doc,getDoc,setDoc,Timestamp } from "firebase/firestore";
 
 export function Login(){
   const[email,setEmail]=useState("")
@@ -45,13 +45,25 @@ export function Login(){
     let provider=new GoogleAuthProvider()
     signInWithPopup(auth,provider)
     .then((userCred)=>{
-      // toast.success("Login successfully")
-      // nav("/")
-      getUserData()
+      saveData(userCred.user.uid,userCred)
     })
     .catch((err)=>{
       toast.error(err.message);
     })
+  }
+
+  const saveData=async(userId,userCred)=>{
+    let data={
+      name:userCred.user.displayName,
+      email:userCred.user.email,
+      contact:userCred.user.phoneNumber,
+      provider:"google",
+      userType:3,
+      status:true,
+      createdAt:Timestamp.now()
+    }
+    await setDoc(doc(db,"users",userId),data)
+    getUserData(userId)
   }
     return(
       <>

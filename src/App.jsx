@@ -16,6 +16,8 @@ import { StarterPage } from "./components/pages/StarterPage"
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import {ToastContainer} from "react-toastify"
 import { RegisterPgOwner } from "./components/auth/RegisterPgOwner"
+import { AddCity }from "./components/admin/cities/AddCity"
+import { AddPg } from "./components/pgOwner/properties/AddPg"
 
 function App() {
   return (
@@ -36,10 +38,15 @@ function App() {
         </Route>
 
         {/* PgOwner */}
-        <Route path="/pgOwner" element={<MasterPgOwner/>}></Route>
+        <Route path="/pgOwner" element={<MasterPgOwner/>}>
+          <Route path="pg/add" element={<AddPg />} />
+        </Route>
 
        {/* Admin */}
-       <Route path="/admin" element={<MasterAdmin/>}></Route>
+       <Route path="/admin" element={<MasterAdmin />}>
+           <Route path="city/add" element={<AddCity />} />
+       </Route>
+
 
       <Route path="*" element={<Error/>}></Route>
       </Routes>

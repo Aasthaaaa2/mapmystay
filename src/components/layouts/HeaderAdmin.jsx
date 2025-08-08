@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from "sweetalert2"
+
 export function HeaderAdmin(){
   let isLogin=sessionStorage.getItem("isLogin")
   let nav=useNavigate()
@@ -37,7 +38,7 @@ export function HeaderAdmin(){
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/admin">Dashboard</Link>
             </li>
             <li>
               <Link to="/propertiesAdd">City</Link>
