@@ -38,11 +38,14 @@ export function AddPg(){
         balcony,
         price,
         type,
+        pgOwnerId:sessionStorage.getItem("userId"),
+        pgName:sessionStorage.getItem("name"),
+        pgEmail:sessionStorage.getItem("email"),
         status:true,
         createdAt:Timestamp.now()
       }
 
-      await addDoc(collection(db,"cities"),data)
+      await addDoc(collection(db,"pgs"),data)
       toast.success("City added successfully!")
       setTitle("")
       setSize()
@@ -95,20 +98,6 @@ export function AddPg(){
                       value={title}
                       onChange={(e)=>{
                         setTitle(e.target.value)
-                      }}
-                    />
-                  </div>
-                  <div className="col-md-6 mt-5 ms-2">
-                    <input
-                      type="file"
-                      className="form-control"
-                      name="image"
-                      placeholder="Image"
-                      required=""
-                      value={imageName}
-                      onChange={(e)=>{
-                        setImageName(e.target.value)
-                        setImage(e.target.files[0])
                       }}
                     />
                   </div>
@@ -181,6 +170,20 @@ export function AddPg(){
                       value={price}
                       onChange={(e)=>{
                         setPrice(e.target.value)
+                      }}
+                    />
+                  </div>
+                      <div className="col-md-6 mt-5 ms-2">
+                    <input
+                      type="file"
+                      className="form-control"
+                      name="image"
+                      placeholder="Image"
+                      required=""
+                      value={imageName}
+                      onChange={(e)=>{
+                        setImageName(e.target.value)
+                        setImage(e.target.files[0])
                       }}
                     />
                   </div>

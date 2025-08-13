@@ -40,67 +40,35 @@ export function HeaderAdmin(){
             <li>
               <Link to="/admin">Dashboard</Link>
             </li>
-            <li>
-              <Link to="/propertiesAdd">City</Link>
+            <li className="dropdown">
+              <a href="#">
+                <span>City</span>{" "}
+                <i className="bi bi-chevron-down toggle-dropdown" />
+              </a>
+              <ul>
+                <li>
+                  <Link to="/admin/city/add" href="#">Add City</Link>
+                </li>
+                <li>
+                  <Link to="/admin/city/manage" href="#">Manage City</Link>
+                </li>
+              </ul>
             </li>
             <li>
-              <Link to="/propertiesManage">Manage PG Owners</Link>
+              <Link to="/admin/pgOwner/manage">Manage PG Owners</Link>
             </li>
             <li>
-              <Link to="/booking">Manage Users</Link>
+              <Link to="/admin/users/manage">Manage Users</Link>
             </li>
              <li>
               <Link to="/booking">View Users</Link>
             </li>
             <li>
-              <Link to="/booking">View Rooms</Link>
+              <Link to="/admin/pgOwner/view">View Rooms</Link>
             </li>
             <li>
               <Link to="/booking">View Bookings</Link>
             </li>
-            {/* <li className="dropdown">
-              <a href="#">
-                <span>Dropdown</span>{" "}
-                <i className="bi bi-chevron-down toggle-dropdown" />
-              </a>
-              <ul>
-                <li>
-                  <a href="#">Dropdown 1</a>
-                </li>
-                <li className="dropdown">
-                  <a href="#">
-                    <span>Deep Dropdown</span>{" "}
-                    <i className="bi bi-chevron-down toggle-dropdown" />
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="#">Deep Dropdown 1</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 2</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 3</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 4</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 5</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">Dropdown 2</a>
-                </li>
-                <li>
-                  <a href="#">Dropdown 3</a>
-                </li>
-                <li>
-                  <a href="#">Dropdown 4</a>
-                </li>
-              </ul>
-            </li> */}
             {
               isLogin?
               <li>

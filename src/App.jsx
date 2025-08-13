@@ -18,6 +18,15 @@ import {ToastContainer} from "react-toastify"
 import { RegisterPgOwner } from "./components/auth/RegisterPgOwner"
 import { AddCity }from "./components/admin/cities/AddCity"
 import { AddPg } from "./components/pgOwner/properties/AddPg"
+import { ManageCity } from "./components/admin/cities/ManageCity"
+import { ManagePg } from "./components/pgOwner/properties/ManagePg"
+import { ManagePgOwner } from "./components/admin/pgOwners/ManagePgOwner"
+import { ManageUsers } from "./components/admin/users/manageUsers"
+import { ViewCity } from "./components/users/pages/ViewCity"
+import { ViewPg } from "./components/users/pages/ViewPg"
+import { ViewRooms } from "./components/admin/pgRooms/ViewRooms"
+import { UpdateCity } from "./components/admin/cities/UpdateCity"
+import { UpdatePg } from "./components/pgOwner/properties/UpdatePg"
 
 function App() {
   return (
@@ -33,18 +42,28 @@ function App() {
           <Route path="contact" element={<Contact/>}></Route>
           <Route path="contact" element={<Contact/>}></Route>
           <Route path="login" element={<Login/>}></Route>
+          <Route path="regPgOwner" element={<RegisterPgOwner/>}></Route>
           <Route path="register" element={<Register/>}></Route>
-          <Route path="/regPgOwner" element={<RegisterPgOwner/>}></Route>
+          <Route path="cities" element={<ViewCity/>}></Route>
+          <Route path="propertySingle" element={<PropertySingle/>}></Route>
+          <Route path="pgs" element={<ViewPg/>}></Route>
         </Route>
 
         {/* PgOwner */}
         <Route path="/pgOwner" element={<MasterPgOwner/>}>
           <Route path="pg/add" element={<AddPg />} />
+          <Route path="pg/manage" element={<ManagePg/>}/>
+          <Route path="pg/update/:id" element={<UpdatePg/>}/>
         </Route>
 
        {/* Admin */}
        <Route path="/admin" element={<MasterAdmin />}>
            <Route path="city/add" element={<AddCity />} />
+           <Route path="city/manage" element={<ManageCity/>}/>
+           <Route path="city/update/:id" element={<UpdateCity/>}/>
+           <Route path="pgOwner/manage" element={<ManagePgOwner/>}/>
+           <Route path="users/manage" element={<ManageUsers/>}/>
+           <Route path="pgOwner/view" element={<ViewRooms/>}/>
        </Route>
 
 

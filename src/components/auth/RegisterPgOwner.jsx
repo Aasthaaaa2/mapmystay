@@ -31,7 +31,8 @@ export function RegisterPgOwner(){
       name,
       email,
       password,
-      userType:3,
+      contact,
+      userType:2,
       status:true,
       createAt:Timestamp.now()
     }

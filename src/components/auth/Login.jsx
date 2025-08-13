@@ -27,6 +27,7 @@ export function Login(){
       sessionStorage.setItem("isLogin",true)
       sessionStorage.setItem("name",userData?.name)
       sessionStorage.setItem("email",userData?.email)
+      sessionStorage.setItem("contact",userData?.contact)
       sessionStorage.setItem("userType",userData?.userType)
       sessionStorage.setItem("userId",userId)
       toast.success("Login successfully");

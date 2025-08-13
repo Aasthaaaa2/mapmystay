@@ -41,58 +41,23 @@ export function HeaderPgOwner(){
             <li>
               <Link to="/pgOwner">Dashboard</Link>
             </li>
-            <li>
-              <Link to="/propertiesAdd">Add PG</Link>
-            </li>
-            <li>
-              <Link to="/propertiesManage">Manage PG</Link>
-            </li>
-            <li>
-              <Link to="/booking">Manage Booking</Link>
-            </li>
-            {/* <li className="dropdown">
+            <li className="dropdown">
               <a href="#">
-                <span>Dropdown</span>{" "}
+                <span>Pg</span>{" "}
                 <i className="bi bi-chevron-down toggle-dropdown" />
               </a>
               <ul>
                 <li>
-                  <a href="#">Dropdown 1</a>
-                </li>
-                <li className="dropdown">
-                  <a href="#">
-                    <span>Deep Dropdown</span>{" "}
-                    <i className="bi bi-chevron-down toggle-dropdown" />
-                  </a>
-                  <ul>
-                    <li>
-                      <a href="#">Deep Dropdown 1</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 2</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 3</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 4</a>
-                    </li>
-                    <li>
-                      <a href="#">Deep Dropdown 5</a>
-                    </li>
-                  </ul>
+                  <Link to="/pgOwner/pg/add" href="#">Add Pg</Link>
                 </li>
                 <li>
-                  <a href="#">Dropdown 2</a>
-                </li>
-                <li>
-                  <a href="#">Dropdown 3</a>
-                </li>
-                <li>
-                  <a href="#">Dropdown 4</a>
+                  <Link to="/pgOwner/pg/manage" href="#">Manage Pg</Link>
                 </li>
               </ul>
-            </li> */}
+            </li>
+            <li>
+              <Link to="/booking">Manage Booking</Link>
+            </li>
             <li>
               <Link to="/contact">Contact</Link>
             </li>
@@ -106,6 +71,9 @@ export function HeaderPgOwner(){
                 <Link to={"/login"}>Login</Link>
               </li>
             }
+            <li>
+                <Link to={"/regPgOwner"}>Register</Link>
+              </li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list" />
         </nav>

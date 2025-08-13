@@ -31,6 +31,7 @@ export function Register(){
       name,
       email,
       password,
+      contact,
       userType:3,
       status:true,
       createAt:Timestamp.now()

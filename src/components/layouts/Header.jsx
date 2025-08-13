@@ -50,10 +50,13 @@ export function Header(){
               <Link to="/services">Services</Link>
             </li>
             <li>
-              <Link to="/properties">Properties</Link>
+              <Link to="/agents">Agents</Link>
             </li>
             <li>
-              <Link to="/agents">Agents</Link>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/cities">Cities</Link>
             </li>
             <li>
               <Link to="/register">Register</Link>
@@ -101,9 +104,6 @@ export function Header(){
                 </li>
               </ul>
             </li> */}
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
             {
               isLogin?
               <li>
