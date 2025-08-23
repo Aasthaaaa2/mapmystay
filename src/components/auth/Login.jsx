@@ -31,9 +31,9 @@ export function Login(){
       sessionStorage.setItem("userType",userData?.userType)
       sessionStorage.setItem("userId",userId)
       toast.success("Login successfully");
-      if(userData?.userType==1){
+      if(userData?.userType === 1){
         nav("/admin")
-      } else if(userData?.userType==2){
+      } else if(userData?.userType === 2){
         nav("/pgOwner")
       } else {
         nav("/")

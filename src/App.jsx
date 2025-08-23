@@ -21,12 +21,14 @@ import { AddPg } from "./components/pgOwner/properties/AddPg"
 import { ManageCity } from "./components/admin/cities/ManageCity"
 import { ManagePg } from "./components/pgOwner/properties/ManagePg"
 import { ManagePgOwner } from "./components/admin/pgOwners/ManagePgOwner"
-import { ManageUsers } from "./components/admin/users/manageUsers"
+import { ManageUsers } from "./components/admin/users/ManageUsers"
 import { ViewCity } from "./components/users/pages/ViewCity"
 import { ViewPg } from "./components/users/pages/ViewPg"
 import { ViewRooms } from "./components/admin/pgRooms/ViewRooms"
 import { UpdateCity } from "./components/admin/cities/UpdateCity"
 import { UpdatePg } from "./components/pgOwner/properties/UpdatePg"
+import { UpdateUsers } from "./components/admin/users/UpdateUsers"
+import { UpdatePgOwner } from "./components/admin/pgOwners/UpdatePgOwner"
 
 function App() {
   return (
@@ -62,7 +64,9 @@ function App() {
            <Route path="city/manage" element={<ManageCity/>}/>
            <Route path="city/update/:id" element={<UpdateCity/>}/>
            <Route path="pgOwner/manage" element={<ManagePgOwner/>}/>
+           <Route path="pgOwner/update/:id" element={<UpdatePgOwner/>}/>
            <Route path="users/manage" element={<ManageUsers/>}/>
+           <Route path="users/update/:id" element={<UpdateUsers/>}/>
            <Route path="pgOwner/view" element={<ViewRooms/>}/>
        </Route>
 

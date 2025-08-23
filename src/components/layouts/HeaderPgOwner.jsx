@@ -71,7 +71,7 @@ export function HeaderPgOwner(){
                 <Link to={"/login"}>Login</Link>
               </li>
             }
-            <li>
+             <li>
                 <Link to={"/regPgOwner"}>Register</Link>
               </li>
           </ul>

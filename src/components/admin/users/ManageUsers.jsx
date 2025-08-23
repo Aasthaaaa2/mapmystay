@@ -78,6 +78,7 @@ export function ManageUsers(){
               <td>{el?.email}</td>
               <td>{el?.contact}</td>
               <td>
+                <Link className="btn btn-success" to={"/admin/users/update/"+el?.id}>Edit</Link>
                 <Link className="btn btn-danger" onClick={()=>{deleteUser(el.id)}}>Delete</Link>
               </td>
             </tr>

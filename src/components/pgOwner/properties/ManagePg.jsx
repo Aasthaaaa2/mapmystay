@@ -1,7 +1,8 @@
-import { collection, onSnapshot, query } from "firebase/firestore"
+import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { db } from "../../Firebase"
 import { Link } from "react-router-dom"
+import Swal from "sweetalert2"
 
 export function ManagePg(){
   const[data,setData]=useState([])
@@ -17,6 +18,34 @@ export function ManagePg(){
       setData(pgData)
     })
   }
+
+  const deletePg=async(pgId)=>{
+        Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // delete code 
+           deleteDoc(doc(db,"pgs",pgId))
+           .then(()=>{
+               Swal.fire({
+                 title: "Deleted!",
+                 text: "Your file has been deleted.",
+                 icon: "success"
+               });
+           })
+           .catch((err)=>{
+              toast.error(err.message)
+           })
+        }
+      });
+    }
+
   return(
     <>
     <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-1.jpg')",height:"450px"}}>

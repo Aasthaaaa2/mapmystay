@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
-import { addDoc, Timestamp,collection, getDoc, doc } from "firebase/firestore"
+import { addDoc, Timestamp,collection, getDoc, doc, updateDoc } from "firebase/firestore"
 import { db } from "../../Firebase"
 import { useParams } from "react-router-dom"
 
@@ -25,17 +25,24 @@ export function UpdateCity(){
 
   const handleForm=async (e)=>{
     e.preventDefault()
-    let formData=new FormData()
-    formData.append("file",image)
-    formData.append("upload_preset","CitiesImage")
-    try{
-      const response=await axios.post(`https://api.cloudinary.com/v1_1/dpbalpopi/image/upload`,formData);
-      saveData(response.data.secure_url);
+
+    if(!!imageName){
+      let formData=new FormData()
+      formData.append("file",image)
+      formData.append("upload_preset","CitiesImage")
+      try{
+        const response=await axios.post(`https://api.cloudinary.com/v1_1/dpbalpopi/image/upload`,formData);
+        saveData(response.data.secure_url);
+      }
+      catch(err){
+        toast.error(err.message)
+      }
     }
-    catch(err){
-      toast.error(err.message)
+    else{
+      saveData(previousImage)
     }
   }
+   
 
   const saveData=async (imageUrl)=>{
     try{
@@ -46,11 +53,12 @@ export function UpdateCity(){
         createdAt:Timestamp.now()
       }
 
-      await addDoc(collection(db,"cities"),data)
+      await updateDoc(doc(db,"cities",id),data)
       toast.success("City added successfully!")
-      setCityName("")
-      setImage({})
-      setImageName("")
+      setPreviousImage(imageUrl)
+      setTimeout(()=>{
+        nav("/admin/city/manage")
+      },2000)
     }
     catch(err){
       toast.error(err.message)

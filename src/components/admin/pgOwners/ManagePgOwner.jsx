@@ -80,6 +80,7 @@ export function ManagePgOwner(){
               <td>{el?.email}</td>
               <td>{el?.contact}</td>
               <td>
+                <Link className="btn btn-success" to={"/admin/pgOwner/update/"+el?.id}>Edit</Link>
                 <Link className="btn btn-danger" onClick={()=>{deletePgOwner(el?.id)}}>Delete</Link>
               </td>
             </tr>

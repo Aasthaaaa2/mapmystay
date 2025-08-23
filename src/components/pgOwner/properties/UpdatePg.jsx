@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
-import { addDoc, Timestamp,collection, getDoc, doc } from "firebase/firestore"
+import { addDoc, Timestamp,collection, getDoc, doc, updateDoc } from "firebase/firestore"
 import { db } from "../../Firebase"
 import { useParams } from "react-router-dom"
 
@@ -31,15 +31,21 @@ export function UpdatePg(){
 
   const handleForm=async (e)=>{
     e.preventDefault()
-    let formData=new FormData()
-    formData.append("file",image)
-    formData.append("upload_preset","CitiesImage")
-    try{
-      const response=await axios.post(`https://api.cloudinary.com/v1_1/dpbalpopi/image/upload`,formData);
-      saveData(response.data.secure_url);
+
+    if(!!imageName){
+      let formData=new FormData()
+      formData.append("file",image)
+      formData.append("upload_preset","CitiesImage")
+      try{
+        const response=await axios.post(`https://api.cloudinary.com/v1_1/dpbalpopi/image/upload`,formData);
+        saveData(response.data.secure_url);
+      }
+      catch(err){
+        toast.error(err.message)
+      }
     }
-    catch(err){
-      toast.error(err.message)
+    else{
+      saveData(previousImage)
     }
   }
 
@@ -60,16 +66,12 @@ export function UpdatePg(){
         createdAt:Timestamp.now()
       }
 
-      await addDoc(collection(db,"pgs"),data)
+      await updateDoc(doc(db,"pgs",id),data)
       toast.success("Pg added successfully!")
-      setTitle("")
-      setSize()
-      setImage({})
-      setImageName("")
-      setMeals("")
-      setBalcony("")
-      setPrice("")
-      setPrice("")
+      setPreviousImage(imageUrl)
+      setTimeout(()=>{
+        nav("/pgOwner/pg/manage")
+      },2000)
     }
     catch(err){
       toast.error(err.message)
