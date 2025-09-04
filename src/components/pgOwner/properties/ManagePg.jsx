@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore"
+import { collection, deleteDoc, doc, onSnapshot, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { db } from "../../Firebase"
 import { Link } from "react-router-dom"
@@ -10,7 +10,9 @@ export function ManagePg(){
     fetchData()
   },[])
   const fetchData=()=>{
-    let q=query(collection(db,"pgs"))
+    const ownerId=sessionStorage.getItem("userId");
+    let q=query(collection(db,"pgs"),
+    where("pgOwnerId","==",ownerId))
     onSnapshot(q,(pgCol)=>{
       let pgData=pgCol.docs.map((el)=>{
         return{...el.data(),id:el.id}
@@ -48,7 +50,7 @@ export function ManagePg(){
 
   return(
     <>
-    <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-1.jpg')",height:"450px"}}>
+    <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/properties/property-1.jpg')",height:"450px"}}>
       <div className="heading">
         <div className="container">
           <div className="row d-flex justify-content-center text-center">
@@ -97,12 +99,6 @@ export function ManagePg(){
           ))}
         </tbody>
       </table>
-      {/* <select>
-        <option>Choose city</option>
-        {data?.map((el,index)=>(
-            <option value={el.id}>{el.cityName}</option>
-        ))}
-      </select> */}
     </div>
     </>
   )

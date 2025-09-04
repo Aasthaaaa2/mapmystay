@@ -28,13 +28,11 @@ export function HeaderAdmin(){
     <>
       <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" className="logo d-flex align-items-center">
-          {/* Uncomment the line below if you also wish to use an image logo */}
-          {/* <img src="assets/img/logo.png" alt=""/> */}
+        <Link to="/admin" className="logo d-flex align-items-center">
           <h1 className="sitename">
             <span>MapMyStay</span>
           </h1>
-        </a>
+        </Link>
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
@@ -60,11 +58,8 @@ export function HeaderAdmin(){
             <li>
               <Link to="/admin/users/manage">Manage Users</Link>
             </li>
-             <li>
-              <Link to="/booking">View Users</Link>
-            </li>
             <li>
-              <Link to="/admin/pgOwner/view">View Rooms</Link>
+              <Link to="/admin/pgRooms/view">View Rooms</Link>
             </li>
             <li>
               <Link to="/booking">View Bookings</Link>

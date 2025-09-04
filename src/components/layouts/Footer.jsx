@@ -1,4 +1,19 @@
+import { Link, useNavigate } from "react-router-dom";
+
 export function Footer(){
+  const nav=useNavigate()
+  const handleClick=()=>{
+    const userType=sessionStorage.getItem("userType");
+
+    if (userType === "1") {
+      nav("/admin/about");
+    } else if (userType === "2") {
+      nav("/pgOwner/about"); 
+    } else {
+      nav("/about"); 
+    }
+
+  }
   return(
     <>
         <footer id="footer" className="footer light-background mt-5 pt-5">
@@ -65,7 +80,7 @@ export function Footer(){
             {/* You can delete the links only if you've purchased the pro version. */}
             {/* Licensing information: https://bootstrapmade.com/license/ */}
             {/* Purchase the pro version with working PHP/AJAX contact form: [buy-url] */}
-            Designed by <a href="https://bootstrapmade.com/">MapMyStay</a>
+            Designed by <a href="#" onClick={handleClick}>MapMyStay</a>
           </div>
         </div>
       </footer>

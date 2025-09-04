@@ -24,6 +24,11 @@ export function UpdatePg(){
       let pgData=pgDoc.data()
       setTitle(pgData.title)
       setPreviousImage(pgData.imageUrl)
+      setSize(pgData.size)
+      setMeals(pgData.meals)
+      setBalcony(pgData.balcony)
+      setPrice(pgData.price)
+      setType(pgData.price)
     }
     useEffect(()=>{
       fetchData()
@@ -81,7 +86,7 @@ export function UpdatePg(){
     <>
     <main className="main">
           {/* Page Title */}
-          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-2.jpg')",height:"450px"}}>
+          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/properties/property-1.jpg')",height:"450px"}}>
             <div className="heading">
               <div className="container" style={{boxShadow:"0px 0px 10px gray"}}>
                 <div className="row d-flex justify-content-center text-center">
@@ -95,7 +100,7 @@ export function UpdatePg(){
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-lg-6 border border-black-700 p-2 m-5 mx-auto">
+              <div className="col-lg-6 border border-black-700 p-2 m-5 mx-auto shadow-lg rounded-4 bg-white">
               <img src={previousImage} height={"100px"} alt="pgImage"/>
               <form
                 action="forms/contact.php"
@@ -106,7 +111,7 @@ export function UpdatePg(){
                 onSubmit={handleForm}
               >
                 <div className="row gy-4">
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <input
                       type="text"
                       className="form-control"
@@ -119,7 +124,7 @@ export function UpdatePg(){
                       }}
                     />
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <input
                       type="number"
                       className="form-control"
@@ -132,7 +137,7 @@ export function UpdatePg(){
                       }}
                     />
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <select
                       className="form-control"
                       name=""
@@ -148,7 +153,7 @@ export function UpdatePg(){
                       <option>All Meals</option>
                     </select>
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <select
                       className="form-control"
                       name=""
@@ -163,7 +168,7 @@ export function UpdatePg(){
                       <option>No</option>
                     </select>
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <select
                       className="form-control"
                       name=""
@@ -178,7 +183,7 @@ export function UpdatePg(){
                       <option>Boy</option>
                     </select>
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <input
                       type="number"
                       className="form-control"
@@ -191,7 +196,7 @@ export function UpdatePg(){
                       }}
                     />
                   </div>
-                      <div className="col-md-6 mt-5 ms-2">
+                      <div className="col-11 mt-5 ms-2">
                     <input
                       type="file"
                       className="form-control"
@@ -205,7 +210,7 @@ export function UpdatePg(){
                       }}
                     />
                   </div>
-                  <div className="col-md-12 mx-2">
+                  <div className="d-flex justify-content-center mt-3">
                     <div className="loading">Loading</div>
                     <div className="error-message" />
                     <div className="sent-message">

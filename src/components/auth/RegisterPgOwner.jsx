@@ -54,7 +54,7 @@ export function RegisterPgOwner(){
           </div>
         </div>
       </div>
-      <div className="col-lg-6 border border-black-700 p-4 m-5 mx-auto">
+      <div className="col-lg-6 border border-black-700 p-4 m-5 mx-auto shadow-lg rounded-4 bg-white">
         <form
           action="forms/contact.php"
           method="post"
@@ -131,7 +131,7 @@ export function RegisterPgOwner(){
                 }}
               />
             </div>
-             <div className="col-md-12">
+             {/* <div className="col-md-12">
               <select
                 className="form-control"
                 name="city"
@@ -147,7 +147,7 @@ export function RegisterPgOwner(){
                   <option value="hoshiarpur">Hoshiarpur</option>
                   <option value="phagwara">Phagwara</option>
                 </select>
-            </div>
+            </div> */}
             <div className="col-md-12 ">
               <div className="loading">Loading</div>
               <div className="error-message" />

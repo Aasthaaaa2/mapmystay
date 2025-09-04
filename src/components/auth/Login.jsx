@@ -84,7 +84,7 @@ export function Login(){
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-lg-6 border border-black-700 p-2 m-5 mx-auto">
+              <div className="col-lg-6 border border-black-700 p-2 m-5 mx-auto shadow-lg rounded-4 bg-white">
               <form
                 action="forms/contact.php"
                 method="post"
@@ -94,7 +94,7 @@ export function Login(){
                 onSubmit={handleForm}
               >
                 <div className="row gy-4">
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 mx-auto">
                     <input
                       type="email"
                       className="form-control"
@@ -107,7 +107,7 @@ export function Login(){
                       }}
                     />
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 mx-auto">
                     <input
                       type="password"
                       className="form-control"
@@ -120,7 +120,7 @@ export function Login(){
                       }}
                     />
                   </div>
-                  <div className="col-md-12 mx-2">
+                  <div className="col-md-12 mx-4">
                     <div className="loading">Loading</div>
                     <div className="error-message" />
                     <div className="sent-message">
@@ -130,8 +130,8 @@ export function Login(){
                   </div>
                 </div>
               </form>
-              <button onClick={googleSignUp} className="btn btn-danger my-2 ms-2"><i className="fab fa-google"></i>&nbsp;SIGN IN WITH GOOGLE</button>
-              <div className="col-md-12 mx-2">
+              <button onClick={googleSignUp} className="btn btn-danger my-2 ms-4"><i className="fab fa-google"></i>&nbsp;SIGN IN WITH GOOGLE</button>
+              <div className="col-md-12 mx-4">
                   Don't have the account?<br/>
                   <Link to="/register">Register</Link>
                 </div>

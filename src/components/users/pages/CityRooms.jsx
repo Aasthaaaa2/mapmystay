@@ -1,17 +1,21 @@
-import { collection, onSnapshot, query } from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../../Firebase";
 
-export function ViewPg(){
+export function CityRooms(){
+  const {cityId} =useParams();
+  const [data,setData]=useState([]);
+  const navigate=useNavigate();
+
   useEffect(()=>{
     fetchData()
-  },[])
-  const [data,setData]=useState()
+  },[cityId])
+
   const fetchData=()=>{
-    let q=query(collection(db,"pgs"))
-    onSnapshot(q,(cityCol)=>{
-      let pgData=cityCol.docs.map((el)=>{
+    let q=query(collection(db,"pgs"),where("cityId","==",cityId))
+    onSnapshot(q,(pgCol)=>{
+      let pgData=pgCol.docs.map((el)=>{
         return{...el.data(),id:el.id};
       })
       setData(pgData)
@@ -26,7 +30,7 @@ export function ViewPg(){
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1 className="text-light mt-5 pt-4">View Pgs</h1>
+                  <h1 className="text-light mt-5 pt-4">View Rooms</h1>
                 </div>
               </div>
             </div>
@@ -37,7 +41,7 @@ export function ViewPg(){
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li className="current">View Pgs</li>
+                <li className="current">View Rooms</li>
               </ol>
             </div>
           </nav>
@@ -60,10 +64,8 @@ export function ViewPg(){
                   className="img-fluid"
                 />
               <div className="card-body">
-                <h3>
-                  <a href="property-single.html" className="stretched-link">
+                <h3 className="text-light">
                     {el?.title}
-                  </a>
                 </h3>  
                 <div className="card-content d-flex flex-column justify-content-center text-center">
                       <div className="row propery-info">
@@ -83,8 +85,18 @@ export function ViewPg(){
                     </div>
               </div>
              </div>
+             <div className="d-flex justify-content-center align-items-center mt-3">
+              <button className="btn btn-success" onClick={()=>navigate(`/roomDetails/${el?.id}`)}>VIEW</button>
+            </div>
             </div>
             ))}
+            {data.length === 0 && (
+              <p className="text-center mt-4">
+                No PGS available in this city.
+              </p>
+            )}
+
+            
           </div>
         </div>  
         </section>

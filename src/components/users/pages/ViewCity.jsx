@@ -61,9 +61,7 @@ export function ViewCity(){
                 />
               <div className="card-body">
                 <h3>
-                  <a href="property-single.html" className="stretched-link">
-                    {el?.cityName}
-                  </a>
+                  <Link to={`/city/${el.id}`} >{el?.cityName}</Link>
                 </h3>  
               </div>
              </div>

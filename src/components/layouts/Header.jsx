@@ -29,13 +29,11 @@ export function Header(){
     <>
       <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" className="logo d-flex align-items-center">
-          {/* Uncomment the line below if you also wish to use an image logo */}
-          {/* <img src="assets/img/logo.png" alt=""/> */}
+        <Link to="/" className="logo d-flex align-items-center">
           <h1 className="sitename">
             <span>MapMyStay</span>
           </h1>
-        </a>
+        </Link>
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
@@ -50,28 +48,29 @@ export function Header(){
               <Link to="/services">Services</Link>
             </li>
             <li>
-              <Link to="/agents">Agents</Link>
-            </li>
-            <li>
               <Link to="/contact">Contact</Link>
             </li>
             <li>
               <Link to="/cities">Cities</Link>
             </li>
-            <li className="dropdown">
-              <a href="#">
-                <span>Register</span>{" "}
-                <i className="bi bi-chevron-down toggle-dropdown" />
-              </a>
-              <ul>
-                <li>
-                  <Link to="/register" href="#">Register as User</Link>
+            {
+              !isLogin && (
+                <li className="dropdown">
+                  <a href="#">
+                    <span>Register</span>{" "}
+                    <i className="bi bi-chevron-down toggle-dropdown" />
+                  </a>
+                  <ul>
+                    <li>
+                      <Link to="/register" href="#">Register as User</Link>
+                    </li>
+                    <li>
+                      <Link to="/regPgOwner" href="#">Register as Pg Owner</Link>
+                    </li>
+                  </ul>
                 </li>
-                <li>
-                  <Link to="/regPgOwner" href="#">Register as Pg Owner</Link>
-                </li>
-              </ul>
-            </li>
+              )
+            }
             
             {
               isLogin?

@@ -1,4 +1,40 @@
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { useState } from "react"
+import { toast } from "react-toastify"
+import { db } from "../Firebase";
+import { useNavigate } from "react-router-dom";
+ 
 export function Contact(){
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [subject,setSubject]=useState("");
+  const [message,setMessage]=useState("");
+
+  const handleForm=async(e)=>{
+    e.preventDefault()
+
+  try{
+    let data={
+      name,
+      email,
+      subject,
+      message,
+      createdAt:Timestamp.now()
+    }
+
+    await addDoc(collection(db,"contacts"),data)
+
+    toast.success("Message sent successfully!")
+
+    setName("")
+    setEmail("")
+    setSubject("")
+    setMessage("")
+  } catch(err){
+    toast.error(err.message)
+  }
+} 
+
   return(
     <>
       <main className="main">
@@ -52,7 +88,7 @@ export function Contact(){
                   <i className="bi bi-geo-alt flex-shrink-0" />
                   <div>
                     <h3>Address</h3>
-                    <p>A108 Adam Street, New York, NY 535022</p>
+                    <p>Sector 60 Market, Mohali, Punjab -160071</p>
                   </div>
                 </div>
                 {/* End Info Item */}
@@ -64,7 +100,7 @@ export function Contact(){
                   <i className="bi bi-telephone flex-shrink-0" />
                   <div>
                     <h3>Call Us</h3>
-                    <p>+1 5589 55488 55</p>
+                    <p>9978112233</p>
                   </div>
                 </div>
                 {/* End Info Item */}
@@ -76,7 +112,7 @@ export function Contact(){
                   <i className="bi bi-envelope flex-shrink-0" />
                   <div>
                     <h3>Email Us</h3>
-                    <p>info@example.com</p>
+                    <p>mapmystay@gmail.com</p>
                   </div>
                 </div>
                 {/* End Info Item */}
@@ -88,43 +124,48 @@ export function Contact(){
                   className="php-email-form"
                   data-aos="fade-up"
                   data-aos-delay={200}
+                  onSubmit={handleForm}
                 >
                   <div className="row gy-4">
                     <div className="col-md-6">
                       <input
                         type="text"
                         name="name"
-                        className="form-control"
+                        className="form-control" required
                         placeholder="Your Name"
-                        required=""
+                        value={name}
+                        onChange={(e)=>setName(e.target.value)}
                       />
                     </div>
                     <div className="col-md-6 ">
                       <input
                         type="email"
-                        className="form-control"
+                        className="form-control" required
                         name="email"
                         placeholder="Your Email"
-                        required=""
+                        value={email}
+                        onChange={(e)=>setEmail(e.target.value)}
                       />
                     </div>
                     <div className="col-md-12">
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control" required
                         name="subject"
                         placeholder="Subject"
-                        required=""
+                        value={subject}
+                        onChange={(e)=>setSubject(e.target.value)}
                       />
                     </div>
                     <div className="col-md-12">
                       <textarea
-                        className="form-control"
+                        className="form-control" required
                         name="message"
                         rows={6}
                         placeholder="Message"
-                        required=""
                         defaultValue={""}
+                        value={message}
+                        onChange={(e)=>setMessage(e.target.value)}
                       />
                     </div>
                     <div className="col-md-12 text-center">

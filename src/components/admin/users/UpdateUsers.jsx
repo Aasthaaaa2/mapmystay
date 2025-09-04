@@ -61,7 +61,7 @@ export function UpdateUsers(){
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-lg-6 border border-black-700 p-2 m-5 mx-auto">
+              <div className="col-lg-6 border border-black-700 p-2 m-5 mx-auto shadow-lg rounded-4 bg-white">
               <form
                 action="forms/contact.php"
                 method="post"
@@ -71,7 +71,7 @@ export function UpdateUsers(){
                 onSubmit={handleForm}
               >
                 <div className="row gy-4">
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <input
                       type="text"
                       className="form-control"
@@ -84,7 +84,7 @@ export function UpdateUsers(){
                       }}
                     />
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <input
                       type="text"
                       className="form-control"
@@ -98,7 +98,7 @@ export function UpdateUsers(){
                       }}
                     />
                   </div>
-                  <div className="col-md-6 mt-5 ms-2">
+                  <div className="col-11 mt-5 ms-2">
                     <input
                       type="text"
                       className="form-control"
@@ -113,7 +113,7 @@ export function UpdateUsers(){
                       }}
                     />
                   </div>
-                  <div className="col-md-12 mx-2">
+                  <div className="d-flex justify-content-center mt-3">
                     <div className="loading">Loading</div>
                     <div className="error-message" />
                     <div className="sent-message">

@@ -29,13 +29,11 @@ export function HeaderPgOwner(){
     <>
       <header id="header" className="header d-flex align-items-center fixed-top">
       <div className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" className="logo d-flex align-items-center">
-          {/* Uncomment the line below if you also wish to use an image logo */}
-          {/* <img src="assets/img/logo.png" alt=""/> */}
+        <Link to="/pgOwner" className="logo d-flex align-items-center">
           <h1 className="sitename">
             <span>MapMyStay</span>
           </h1>
-        </a>
+        </Link>
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
@@ -59,7 +57,7 @@ export function HeaderPgOwner(){
               <Link to="/booking">Manage Booking</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/pgOwner/contact/owner">Contact</Link>
             </li>
             {
               isLogin?
@@ -71,9 +69,6 @@ export function HeaderPgOwner(){
                 <Link to={"/login"}>Login</Link>
               </li>
             }
-             <li>
-                <Link to={"/regPgOwner"}>Register</Link>
-              </li>
           </ul>
           <i className="mobile-nav-toggle d-xl-none bi bi-list" />
         </nav>
