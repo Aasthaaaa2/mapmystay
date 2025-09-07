@@ -19,6 +19,7 @@ export function ContactOwner(){
       email,
       subject,
       message,
+      role:"pgOwner",
       createdAt:Timestamp.now()
     }
 
@@ -44,10 +45,7 @@ export function ContactOwner(){
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1 className="text-light">Contact</h1>
-                  <p className="mb-0 text-light">
-                    Have questions or need assistance? We're here to help you with PG booking, property listings, technical support, or general inquiries. Reach out to us using the contact details below or simply drop a message through the form.
-                  </p>
+                  <h1 className="text-light" style={{marginTop:70}}>Contact</h1>
                 </div>
               </div>
             </div>

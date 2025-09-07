@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore"
+import { collection, deleteDoc, doc, onSnapshot, query, updateDoc } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { db } from "../../Firebase"
 import Swal from "sweetalert2"
@@ -18,23 +18,24 @@ export function ManageUsers(){
       setData(usersData)
     })
   }
-  const deleteUser=async(userId)=>{
-        Swal.fire({
+
+  const changeStatus=async(userId,status)=>{
+    Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Change"
       }).then((result) => {
         if (result.isConfirmed) {
           // delete code 
-           deleteDoc(doc(db,"users",userId))
+           updateDoc(doc(db,"users",userId),{status:!status})
            .then(()=>{
                Swal.fire({
-                 title: "Deleted!",
-                 text: "Your file has been deleted.",
+                 title: "Changed!",
+                 text: "The status has been changed.",
                  icon: "success"
                });
            })
@@ -43,15 +44,15 @@ export function ManageUsers(){
            })
         }
       });
-    }
+  }
   return(
     <>
-    <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-1.jpg')",height:"450px"}}>
+    <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
       <div className="heading">
         <div className="container">
           <div className="row d-flex justify-content-center text-center">
             <div className="col-lg-2">
-              <h1 className="text-dark pt-5 mt-4">Manage Users</h1>
+              <h1 className="text-light pt-5 mt-4">Manage Users</h1>
             </div>
           </div>
         </div>
@@ -78,20 +79,12 @@ export function ManageUsers(){
               <td>{el?.email}</td>
               <td>{el?.contact}</td>
               <td>
-                <Link className="btn btn-success" to={"/admin/users/update/"+el?.id}>Edit</Link>
-                <Link className="btn btn-danger" onClick={()=>{deleteUser(el.id)}}>Delete</Link>
+                <Link className="btn btn-danger" onClick={()=>{changeStatus(el.id,el?.status)}}>{el.status?"Change Status":"Status:false"}</Link>
               </td>
             </tr>
           ))}
       </tbody>
       </table>
-     
-      {/* <select>
-        <option>Choose city</option>
-        {data?.map((el,index)=>(
-            <option value={el.id}>{el.cityName}</option>
-        ))}
-      </select> */}
     </div>
     </>
   )

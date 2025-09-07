@@ -3,6 +3,7 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { addDoc, Timestamp,collection, getDocs } from "firebase/firestore"
 import { db } from "../../Firebase"
+import { useNavigate } from "react-router-dom"
 
 export function AddPg(){
   const[title,setTitle]=useState("");
@@ -15,6 +16,8 @@ export function AddPg(){
   const[type,setType]=useState("")
   const[city,setCity]=useState("")
   const[cities,setCities]=useState([])
+
+  const nav=useNavigate()
 
   useEffect(()=>{
     const fetchCities=async()=>{
@@ -36,8 +39,8 @@ export function AddPg(){
     catch(err){
       toast.error(err.message)
     }
+     nav("/pgOwner/pg/manage")
   }
-
   const saveData=async (imageUrl)=>{
     try{
       let data={
@@ -50,17 +53,16 @@ export function AddPg(){
         type,
         cityId:city,
         pgOwnerId:sessionStorage.getItem("userId"),
-        pgName:sessionStorage.getItem("name"),
+        pgOwnerName:sessionStorage.getItem("name"),
         pgEmail:sessionStorage.getItem("email"),
         status:true,
         createdAt:Timestamp.now()
       }
 
       await addDoc(collection(db,"pgs"),data)
-      toast.success("City added successfully!")
-
+      toast.success("Pg added successfully!")
       setTitle("")
-      setSize()
+      setSize("")
       setImage({})
       setImageName("")
       setMeals("")
@@ -73,16 +75,17 @@ export function AddPg(){
       toast.error(err.message)
     }
   }
+
   return(
     <>
     <main className="main">
           {/* Page Title */}
-          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/properties/property-1.jpg')",height:"450px"}}>
+          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
             <div className="heading">
               <div className="container">
                 <div className="row d-flex justify-content-center text-center">
                   <div className="col-lg-2">
-                    <h1 className="text-dark pt-5 mt-4">Add Pg</h1>
+                    <h1 className="text-light pt-5 mt-4">Add Pg</h1>
                   </div>
                 </div>
               </div>
@@ -196,9 +199,8 @@ export function AddPg(){
                       className="form-control" required
                       name="image"
                       placeholder="Image"
-                      value={imageName}
                       onChange={(e)=>{
-                        setImageName(e.target.value)
+                         setImageName(e.target.files[0]?.name || "")
                         setImage(e.target.files[0])
                       }}
                     />

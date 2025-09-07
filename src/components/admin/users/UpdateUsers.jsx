@@ -47,12 +47,12 @@ export function UpdateUsers(){
     <>
     <main className="main">
           {/* Page Title */}
-          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-1.jpg')",height:"450px"}}>
+          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
             <div className="heading">
               <div className="container" style={{boxShadow:"0px 0px 10px gray"}}>
                 <div className="row d-flex justify-content-center text-center">
                   <div className="col-lg-2">
-                    <h1 className="text-dark pt-5 mt-4" >Update Users</h1>
+                    <h1 className="text-light pt-5 mt-4" >Update Users</h1>
                   </div>
                 </div>
               </div>

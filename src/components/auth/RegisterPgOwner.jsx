@@ -19,6 +19,7 @@ export function RegisterPgOwner(){
     .then((userCred)=>{
       toast.success("registered successfully")
       saveData(userCred.user.uid)
+      
     })
     .catch((err)=>{
       toast.error(err.message)
@@ -37,7 +38,7 @@ export function RegisterPgOwner(){
       createAt:Timestamp.now()
     }
     await setDoc(doc(db,"users",userId),data)
-    nav("/")
+    nav("/login")
   }
   return(
     <>

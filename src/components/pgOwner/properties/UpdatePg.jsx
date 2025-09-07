@@ -3,7 +3,7 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { addDoc, Timestamp,collection, getDoc, doc, updateDoc } from "firebase/firestore"
 import { db } from "../../Firebase"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export function UpdatePg(){
   const[title,setTitle]=useState("");
@@ -15,6 +15,7 @@ export function UpdatePg(){
   const[price,setPrice]=useState()
   const[type,setType]=useState("")
   const[previousImage,setPreviousImage]=useState("")
+  const nav=useNavigate()
 
   var{id}=useParams()
   console.log("Params is:",id);
@@ -28,7 +29,7 @@ export function UpdatePg(){
       setMeals(pgData.meals)
       setBalcony(pgData.balcony)
       setPrice(pgData.price)
-      setType(pgData.price)
+      setType(pgData.type)
     }
     useEffect(()=>{
       fetchData()
@@ -72,7 +73,7 @@ export function UpdatePg(){
       }
 
       await updateDoc(doc(db,"pgs",id),data)
-      toast.success("Pg added successfully!")
+      toast.success("Pg updated successfully!")
       setPreviousImage(imageUrl)
       setTimeout(()=>{
         nav("/pgOwner/pg/manage")
@@ -86,12 +87,12 @@ export function UpdatePg(){
     <>
     <main className="main">
           {/* Page Title */}
-          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/properties/property-1.jpg')",height:"450px"}}>
+          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
             <div className="heading">
               <div className="container" style={{boxShadow:"0px 0px 10px gray"}}>
                 <div className="row d-flex justify-content-center text-center">
                   <div className="col-lg-2">
-                    <h1 className="text-dark pt-5 mt-4">Update Pg</h1>
+                    <h1 className="text-light pt-5 mt-4">Update Pg</h1>
                   </div>
                 </div>
               </div>

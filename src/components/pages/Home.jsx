@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export function Home(){
   return(
     <>
@@ -14,13 +16,13 @@ export function Home(){
               <img src="/assets/img/hero-carousel/hero-carousel-1.jpg" alt="" />
               <div className="carousel-container">
                 <div>
-                  <p>Doral, Florida</p>
+                  <h5><i>Comfortably Accomodation,</i></h5>
                   <h2>
                     <span>204</span> Olive Road Two
                   </h2>
-                  <a href="property-single.html" className="btn-get-started">
-                    rent | $ 12.000
-                  </a>
+                  <Link to="/cities" className="btn-get-started">
+                    Rent | Rs.12000
+                  </Link>
                 </div>
               </div>
             </div>
@@ -103,10 +105,8 @@ export function Home(){
                   <div className="icon">
                     <i className="bi bi-activity" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
-                    <h3>Verified PG Listings</h3>
-                  </a>
-                  <p>
+                  <Link to="/"><h3>Verified PG Listings</h3></Link>
+                  <p className="fs-6">
                     Access a curated collection of PG accommodations with detailed property descriptions, real images, amenities, and verified information to ensure trust and transparency.
                   </p>
                 </div>
@@ -121,10 +121,8 @@ export function Home(){
                   <div className="icon">
                     <i className="bi bi-broadcast" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
-                    <h3>Online Booking & Secure Payments</h3>
-                  </a>
-                  <p>
+                  <Link to="/"><h3>Online Booking & Secure Payments</h3></Link>
+                  <p className="fs-6">
                     Enjoy a fast and safe booking process through our platform with real-time availability checks and secure payment gateways ensuring smooth transactions.
                   </p>
                 </div>
@@ -139,11 +137,9 @@ export function Home(){
                   <div className="icon">
                     <i className="bi bi-easel" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
-                    <h3>Personalized Booking Dashboard</h3>
-                  </a>
-                  <p>
-                    UUsers get a personalized dashboard to manage their bookings, view payment history, check room availability, and keep track of stay details in one place.
+                  <Link to="/"><h3>Personalized Booking Dashboard</h3></Link>
+                  <p className="fs-6">
+                    Users get a personalized dashboard to manage their bookings, view payment history, check room availability, and keep track of stay details in one place.
                   </p>
                 </div>
               </div>
@@ -157,13 +153,10 @@ export function Home(){
                   <div className="icon">
                     <i className="bi bi-bounding-box-circles" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
-                    <h3>PG Owner Property Management</h3>
-                  </a>
-                  <p>
+                  <Link to="/"><h3>PG Owner Property Management</h3></Link>
+                  <p className="fs-6">
                     PG owners have a dedicated portal where they can add or update PG listings, manage room availability, handle tenant bookings, and monitor payment statuses efficiently.
                   </p>
-                  <a href="service-details.html" className="stretched-link" />
                 </div>
               </div>
               {/* End Service Item */}
@@ -176,13 +169,10 @@ export function Home(){
                   <div className="icon">
                     <i className="bi bi-calendar4-week" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
-                    <h3>Admin Control Panel</h3>
-                  </a>
-                  <p>
+                  <Link to="/"><h3>Admin Control Panel</h3></Link>
+                  <p className="fs-6">
                     Admins can manage city-wise PG listings, oversee PG owner registrations, verify users, and ensure smooth platform operations with backend management tools.
                   </p>
-                  <a href="service-details.html" className="stretched-link" />
                 </div>
               </div>
               {/* End Service Item */}
@@ -195,13 +185,10 @@ export function Home(){
                   <div className="icon">
                     <i className="bi bi-chat-square-text" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
-                    <h3>24/7 Support Assistance</h3>
-                  </a>
-                  <p>
+                  <Link to="/"><h3>24/7 Support Assistance</h3></Link>
+                  <p className="fs-6">
                     Our support team is always available to assist with queries related to bookings, technical support, and platform navigation.
                   </p>
-                  <a href="service-details.html" className="stretched-link" />
                 </div>
               </div>
               {/* End Service Item */}

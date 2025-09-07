@@ -17,7 +17,7 @@ import { AddPg } from "./components/pgOwner/properties/AddPg"
 import { ManageCity } from "./components/admin/cities/ManageCity"
 import { ManagePg } from "./components/pgOwner/properties/ManagePg"
 import { ManagePgOwner } from "./components/admin/pgOwners/ManagePgOwner"
-import { ManageUsers } from "./components/admin/users/ManageUsers"
+import { ManageUsers } from "./components/admin/users/manageUsers"
 import { ViewCity } from "./components/users/pages/ViewCity"
 import { ViewRooms } from "./components/admin/pgRooms/ViewRooms"
 import { UpdateCity } from "./components/admin/cities/UpdateCity"
@@ -27,6 +27,12 @@ import { UpdatePgOwner } from "./components/admin/pgOwners/UpdatePgOwner"
 import { CityRooms } from "./components/users/pages/CityRooms"
 import { RoomsDetails } from "./components/users/pages/RoomsDetails"
 import { ContactOwner } from "./components/pages/ContactOwner"
+import { ManageBookingOwner } from "./components/pgOwner/bookings/ManageBookingOwner"
+import { ViewBookings } from "./components/users/bookings/ViewBookings"
+import { ViewBookingsAdmin } from "./components/admin/bookings/ViewBookingsAdmin"
+import { DashboardAdmin } from "./components/admin/dashboard/DashboardAdmin"
+import { DashboardPgOwner } from "./components/pgOwner/dashboard/DashboardPgOwner"
+import { ViewQueries } from "./components/admin/queries/ViewQueries"
 
 function App() {
   return (
@@ -46,19 +52,23 @@ function App() {
           <Route path="cities" element={<ViewCity/>}></Route>
           <Route path="/city/:cityId" element={<CityRooms />} />
           <Route path="/roomDetails/:pgId" element={<RoomsDetails/>}/>
+          <Route path="bookings" element={<ViewBookings/>}/>
         </Route>
 
         {/* PgOwner */}
         <Route path="/pgOwner" element={<MasterPgOwner/>}>
+          <Route index element={<DashboardPgOwner/>}></Route>
           <Route path="about" element={<About/>}/>
           <Route path="pg/add" element={<AddPg />} />
           <Route path="pg/manage" element={<ManagePg/>}/>
           <Route path="pg/update/:id" element={<UpdatePg/>}/>
           <Route path="contact/owner" element={<ContactOwner/>}></Route>
+          <Route path="bookingsOwner/manage" element={<ManageBookingOwner/>}></Route>
         </Route>
 
        {/* Admin */}
        <Route path="/admin" element={<MasterAdmin />}>
+           <Route index element={<DashboardAdmin/>}/>
            <Route path="about" element={<About/>}/>
            <Route path="city/add" element={<AddCity />} />
            <Route path="city/manage" element={<ManageCity/>}/>
@@ -68,6 +78,8 @@ function App() {
            <Route path="users/manage" element={<ManageUsers/>}/>
            <Route path="users/update/:id" element={<UpdateUsers/>}/>
            <Route path="pgRooms/view" element={<ViewRooms/>}/>
+           <Route path="bookings/manage" element={<ViewBookingsAdmin/>}/>
+           <Route path="queries" element={<ViewQueries/>}/>
        </Route>
 
 

@@ -59,12 +59,12 @@ export function ViewRooms(){
     <>
       <main className="main">
         {/* Page Title */}
-        <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-1.jpg')",height:"450px"}}>
+        <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
           <div className="heading">
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1 className="text-dark mt-5 pt-4">View Rooms</h1>
+                  <h1 className="text-light mt-5 pt-4">View Rooms</h1>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export function ViewRooms(){
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li className="current">View Pgs</li>
+                <li className="current">View Rooms</li>
               </ol>
             </div>
           </nav>

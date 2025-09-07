@@ -37,7 +37,7 @@ export function Register(){
       createAt:Timestamp.now()
     }
     await setDoc(doc(db,"users",userId),data)
-    nav("/")
+    nav("/login")
   }
   return(
     <>

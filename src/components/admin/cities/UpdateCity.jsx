@@ -3,13 +3,14 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import { addDoc, Timestamp,collection, getDoc, doc, updateDoc } from "firebase/firestore"
 import { db } from "../../Firebase"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export function UpdateCity(){
   const[cityName,setCityName]=useState("");
   const[imageName,setImageName]=useState("")
   const[image,setImage]=useState({})
   const[previousImage,setPreviousImage]=useState("")
+  const nav=useNavigate()
   var{id}=useParams()
   console.log("Param is:",id);
 
@@ -68,12 +69,12 @@ export function UpdateCity(){
     <>
     <main className="main">
           {/* Page Title */}
-          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-1.jpg')",height:"450px"}}>
+          <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
             <div className="heading">
               <div className="container">
                 <div className="row d-flex justify-content-center text-center">
                   <div className="col-lg-2">
-                    <h1 className="text-dark pt-5 mt-4" >Update City</h1>
+                    <h1 className="text-light pt-5 mt-4" >Update City</h1>
                   </div>
                 </div>
               </div>

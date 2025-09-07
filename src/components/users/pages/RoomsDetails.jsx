@@ -1,11 +1,58 @@
-import { collection, doc, getDoc, onSnapshot, query, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, onSnapshot, query, Timestamp, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../../Firebase";
+import { toast } from "react-toastify";
 
 export function RoomsDetails(){
+  const nav=useNavigate()
   const {pgId} =useParams();
   const [pg,setPg]=useState();
+  
+  const handleBookingRequest = async (pgOwnerName,pgOwnerId,pgEmail,title,price,type) => {
+  const userId=sessionStorage.getItem("userId")
+  const userName=sessionStorage.getItem("name")
+  const userEmail=sessionStorage.getItem("email")
+
+  if(!userId || !userName || !userEmail){
+    toast.error("Please Login first to Request Booking");
+    nav("/login")
+    return
+  }
+
+  const q=query(collection(db,"bookings"),where("userId","==",userId),where("pgname","==",title))
+
+  const snap=await getDocs(q)
+
+  if(!snap.empty){
+    toast.info("You have already requested for this PG")
+    return
+  }
+
+  const data = {
+    userId,
+    userName,
+    userEmail,
+    pgOwnerName:pgOwnerName,
+    pgownerId:pgOwnerId,
+    pgname:title,
+    pgEmail:pgEmail,
+    type:type,
+    price,
+    status: false,
+    paymentStatus:false,
+    createdAt: Timestamp.now()
+  };
+
+  console.log(data)
+  try {
+    await addDoc(collection(db, "bookings"), data);
+    toast.success("Booking request sent ");
+  } catch (err) {
+    toast.error("Failed to send booking request ");
+    console.log(err);
+  }
+};
 
   useEffect(()=>{
     const fetchPg=async()=>{
@@ -77,8 +124,10 @@ export function RoomsDetails(){
                     <b>Price:</b> ₹{pg?.price}
                   </li>
                 </ul>
-                <button className="btn btn-success btn-lg">
-                  Confirm Booking
+                <button className="btn btn-success btn-lg" onClick={()=>{
+                  handleBookingRequest(pg?.pgOwnerName,pg?.pgOwnerId,pg?.pgEmail,pg?.title,pg?.price,pg?.type)
+                }}>
+                  Request Booking
                 </button>
                 </div>
               </div>

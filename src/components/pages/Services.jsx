@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Services(){
   return(
     <>
@@ -8,10 +10,7 @@ export function Services(){
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1 className="text-light">Services</h1>
-                  <p className="mb-0 text-light">
-                    At MapMyStay, we provide essential digital services to streamline the PG booking and management process for PG Seekers, PG Owners, and Platform Admins. Our goal is to make accommodation search, booking, and property management effortless for all users.
-                  </p>
+                  <h1 className="text-light" style={{marginTop:70}}>Services</h1>
                 </div>
               </div>
             </div>
@@ -20,7 +19,7 @@ export function Services(){
             <div className="container">
               <ol>
                 <li>
-                  <a href="index.html">Home</a>
+                  <Link to="/" >Home</Link>
                 </li>
                 <li className="current">Services</li>
               </ol>
@@ -41,10 +40,10 @@ export function Services(){
                   <div className="icon">
                     <i className="bi bi-activity" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
+                  <Link to="/services">
                     <h3>Verified PG Listings</h3>
-                  </a>
-                  <p>
+                  </Link>
+                  <p className="fs-6">
                     Access a curated collection of PG accommodations with detailed property descriptions, real images, amenities, and verified information to ensure trust and transparency.
                   </p>
                 </div>
@@ -59,10 +58,10 @@ export function Services(){
                   <div className="icon">
                     <i className="bi bi-broadcast" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
+                  <Link to="/services">
                     <h3>Online Booking & Secure Payments</h3>
-                  </a>
-                  <p>
+                  </Link>
+                  <p className="fs-6">
                     Enjoy a fast and safe booking process through our platform with real-time availability checks and secure payment gateways ensuring smooth transactions.
                   </p>
                 </div>
@@ -77,10 +76,10 @@ export function Services(){
                   <div className="icon">
                     <i className="bi bi-easel" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
+                  <Link to="/services" >
                     <h3>Personalized Booking Dashboard</h3>
-                  </a>
-                  <p>
+                  </Link>
+                  <p className="fs-6">
                     Users get a personalized dashboard to manage their bookings, view payment history, check room availability, and keep track of stay details in one place.
                   </p>
                 </div>
@@ -95,13 +94,12 @@ export function Services(){
                   <div className="icon">
                     <i className="bi bi-bounding-box-circles" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
+                  <Link to="/services" >
                     <h3>PG Owner Property Management</h3>
-                  </a>
-                  <p>
+                  </Link>
+                  <p className="fs-6">
                     PG owners have a dedicated portal where they can add or update PG listings, manage room availability, handle tenant bookings, and monitor payment statuses efficiently.
                   </p>
-                  <a href="service-details.html" className="stretched-link" />
                 </div>
               </div>
               {/* End Service Item */}
@@ -114,13 +112,12 @@ export function Services(){
                   <div className="icon">
                     <i className="bi bi-calendar4-week" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
+                  <Link to="/services" >
                     <h3>Admin Control Panel</h3>
-                  </a>
-                  <p>
+                  </Link>
+                  <p className="fs-6">
                     Admins can manage city-wise PG listings, oversee PG owner registrations, verify users, and ensure smooth platform operations with backend management tools.
                   </p>
-                  <a href="service-details.html" className="stretched-link" />
                 </div>
               </div>
               {/* End Service Item */}
@@ -133,13 +130,12 @@ export function Services(){
                   <div className="icon">
                     <i className="bi bi-chat-square-text" />
                   </div>
-                  <a href="service-details.html" className="stretched-link">
+                  <Link to="/services" >
                     <h3>24/7 Support Assistance</h3>
-                  </a>
-                  <p>
+                  </Link>
+                  <p className="fs-6">
                     Our support team is always available to assist with queries related to bookings, technical support, and platform navigation.
                   </p>
-                  <a href="service-details.html" className="stretched-link" />
                 </div>
               </div>
               {/* End Service Item */}
