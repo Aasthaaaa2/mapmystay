@@ -4,85 +4,66 @@ export function Home(){
   return(
     <>
       <main className="main">
-        {/* Hero Section */}
         <section id="hero" className="hero section dark-background">
-          <div
-            id="hero-carousel"
-            className="carousel slide"
-            data-bs-ride="carousel"
-            data-bs-interval={5000}
-          >
-            <div className="carousel-item active">
-              <img src="/assets/img/hero-carousel/hero-carousel-1.jpg" alt="" />
-              <div className="carousel-container">
-                <div>
-                  <h5><i>Comfortably Accomodation,</i></h5>
-                  <h2>
-                    <span>204</span> Olive Road Two
-                  </h2>
-                  <Link to="/cities" className="btn-get-started">
-                    Rent | &#8377;12000
-                  </Link>
-                </div>
-              </div>
+      <div
+        id="hero-carousel"
+        className="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval={5000}
+      >
+        <div className="carousel-item active">
+          <img src="/assets/img/hero-carousel/hero-carousel-1.jpg" alt="" />
+          <div className="carousel-container">
+            <div>
+              <h5><i>Comfortably Accommodation,</i></h5>
+              <h2>
+                <span>204</span> Olive Road Two
+              </h2>
+              <Link to="/cities" className="btn-get-started">
+                Rent | &#8377;12000
+              </Link>
             </div>
-            {/* End Carousel Item */}
-            <div className="carousel-item">
-              <img src="/assets/img/hero-carousel/hero-carousel-2.jpg" alt="" />
-              <div className="carousel-container">
-                <div>
-                  <p>Doral, Florida</p>
-                  <h2>
-                    <span>247</span> Venda Road Five
-                  </h2>
-                  <a href="property-single.html" className="btn-get-started">
-                    sale | $ 356.000
-                  </a>
-                </div>
-              </div>
-            </div>
-            {/* End Carousel Item */}
-            <div className="carousel-item">
-              <img src="/assets/img/hero-carousel/hero-carousel-3.jpg" alt="" />
-              <div className="carousel-container">
-                <div>
-                  <p>Doral, Florida</p>
-                  <h2>
-                    <span>247</span> Vitra Road three
-                  </h2>
-                  <a href="property-single.html" className="btn-get-started">
-                    rent | $ 3.000
-                  </a>
-                </div>
-              </div>
-            </div>
-            {/* End Carousel Item */}
-            <a
-              className="carousel-control-prev"
-              href="#hero-carousel"
-              role="button"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon bi bi-chevron-left"
-                aria-hidden="true"
-              />
-            </a>
-            <a
-              className="carousel-control-next"
-              href="#hero-carousel"
-              role="button"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon bi bi-chevron-right"
-                aria-hidden="true"
-              />
-            </a>
-            <ol className="carousel-indicators" />
           </div>
-        </section>
-        {/* /Hero Section */}
+        </div>
+
+        <div className="carousel-item">
+          <img src="/assets/img/hero-carousel/hero-carousel-2.jpg" alt="" />
+          <div className="carousel-container">
+            <div>
+              <h5><i>Homely Feel,</i></h5>
+              <h2>
+                <span>247</span> Venda Road Five
+              </h2>
+              <Link to="/cities" className="btn-get-started">
+                Rent | &#8377;10000
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="carousel-item">
+          <img src="/assets/img/hero-carousel/hero-carousel-3.jpg" alt="" />
+          <div className="carousel-container">
+            <div>
+              <h5><i>Qwerty,</i></h5>
+              <h2>
+                <span>247</span> Vitra Road Three
+              </h2>
+              <Link to="/cities" className="btn-get-started">
+                Rent | &#8377;8000
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <ol className="carousel-indicators">
+          <li data-bs-target="#hero-carousel" data-bs-slide-to="0" className="active"></li>
+          <li data-bs-target="#hero-carousel" data-bs-slide-to="1"></li>
+          <li data-bs-target="#hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+      </div>
+</section>
+
         {/* Services Section */}
 
         <section id="services" className="services section">
