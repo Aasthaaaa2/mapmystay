@@ -25,8 +25,8 @@ export function RoomsDetails(){
   const snap=await getDocs(q)
 
   if(!snap.empty){
-    toast.info("You have already requested for this PG")
-    return
+    toast.info("You have already requested for this PG");
+    return;
   }
 
   const data = {
@@ -48,12 +48,12 @@ export function RoomsDetails(){
   try {
     await addDoc(collection(db, "bookings"), data);
     toast.success("Booking request sent ");
+    nav("/bookings");
   } catch (err) {
     toast.error("Failed to send booking request ");
     console.log(err);
   }
 };
-
   useEffect(()=>{
     const fetchPg=async()=>{
       const docRef=doc(db,"pgs",pgId);

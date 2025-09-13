@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
-import { addDoc, Timestamp,collection } from "firebase/firestore"
+import { addDoc, Timestamp,collection, where, getDocs, query } from "firebase/firestore"
 import { db } from "../../Firebase"
 import { useNavigate } from "react-router-dom"
 
@@ -28,6 +28,15 @@ export function AddCity(){
 
   const saveData=async (imageUrl)=>{
     try{
+      const q=query(collection(db,"cities"),where("cityName","==",cityName.trim()))
+
+      const querySnapshot=await getDocs(q)
+
+      if(!querySnapshot.empty){
+        toast.error("City already exists!")
+        nav("/admin/city/manage")
+        return;
+      }
       let data={
         cityName,
         imageUrl,
@@ -81,9 +90,7 @@ export function AddCity(){
                       name="cityName"
                       placeholder="City Name"
                       value={cityName}
-                      onChange={(e)=>{
-                        setCityName(e.target.value)
-                      }}
+                      onChange={(e)=>setCityName(e.target.value.replace(/[^A-Za-z\s]/g, ""))}
                     />
                   </div>
                   <div className="col-11 mt-5 ms-2">

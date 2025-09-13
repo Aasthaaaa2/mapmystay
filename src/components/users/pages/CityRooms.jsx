@@ -85,9 +85,21 @@ export function CityRooms(){
                     </div>
               </div>
              </div>
-             <div className="d-flex justify-content-center align-items-center mt-3">
-              <button className="btn btn-success" onClick={()=>navigate(`/roomDetails/${el?.id}`)}>VIEW</button>
-            </div>
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            {el.status ? (
+               <button
+                className="btn btn-success"
+                onClick={() => navigate(`/roomDetails/${el?.id}`)}
+              >
+                VIEW
+              </button>
+            ) : (
+              <button className="btn btn-secondary" disabled>
+                Currently Unavailable
+              </button>
+            )}
+          </div>
+
             </div>
             ))}
             {data.length === 0 && (

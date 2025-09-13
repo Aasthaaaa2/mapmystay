@@ -21,7 +21,7 @@ export function Home(){
                     <span>204</span> Olive Road Two
                   </h2>
                   <Link to="/cities" className="btn-get-started">
-                    Rent | Rs.12000
+                    Rent | &#8377;12000
                   </Link>
                 </div>
               </div>

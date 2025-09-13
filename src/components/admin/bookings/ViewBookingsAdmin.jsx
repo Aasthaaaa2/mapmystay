@@ -58,7 +58,7 @@ export function ViewBookingsAdmin(){
               <td>{el?.pgOwnerName}</td>
               <td>{el?.pgEmail}</td>
               <td>{el?.pgname}</td>
-              <td>{el?.price}</td>
+              <td>&#8377;{el?.price}</td>
               <td>
                   {el?.status === false ? (
                     <span className="btn btn-warning text-dark fs-6">

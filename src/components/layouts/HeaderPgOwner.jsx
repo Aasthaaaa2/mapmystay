@@ -96,7 +96,7 @@ export function HeaderPgOwner(){
                       className="text-dark "
                       style={{ fontSize:20,fontWeight: 450, fontFamily: "'Poppins', sans-serif" }}
                     >
-                      View Bookings
+                      Bookings
                     </Link>
                   </li>
 

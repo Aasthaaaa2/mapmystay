@@ -1,65 +1,92 @@
-import { collection, deleteDoc, doc, onSnapshot, query } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../../Firebase";
 import Swal from "sweetalert2";
 
-export function ViewRooms(){
-  const [data,setData]=useState([])
-  const [cities,setCities]=useState({})
+export function ViewRooms() {
+  const [rooms, setRooms] = useState([]);
+  const [cities, setCities] = useState({});
 
-  useEffect(()=>{
-    fetchData()
-    fetchCities()
-  },[])
-  
-  const fetchData=()=>{
-    let q=query(collection(db,"pgs"))
-    onSnapshot(q,(cityCol)=>{
-      let pgData=cityCol.docs.map((el)=>{
-        return{...el.data(),id:el.id};
-      })
-      setData(pgData)
-    })
-  }
-  const fetchCities=()=>{
-    let q=query(collection(db,"cities"));
-    onSnapshot(q,(cityCol)=>{
-      let cityMap={};
-      cityCol.docs.forEach((el)=>{
-        cityMap[el.id]=el.data().cityName;
-      })
-      setCities(cityMap)
-    })
-  }
+  useEffect(() => {
+    fetchRooms();
+    fetchCities();
+  }, []);
 
-  const deleteRoom=async(roomId)=>{
-    Swal.fire({
-      title: "Are you sure?",
-      text: "This room will be permanently deleted!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteDoc(doc(db, "pgs", roomId))
-          .then(() => {
-            Swal.fire("Deleted!", "Room has been deleted.", "success");
-          })
-          .catch((err) => {
-            Swal.fire("Error", err.message, "error");
-          });
-      }
+  const fetchRooms = async () => {
+    const roomsSnapshot = await getDocs(collection(db, "pgs"));
+    
+    const roomsData = await Promise.all(
+      roomsSnapshot.docs.map(async (docSnap) => {
+        const room = { ...docSnap.data(), id: docSnap.id };
+        const bookingSnap = await getDocs(
+          query(collection(db, "bookings"), where("pgname", "==", room.title))
+        );
+        return { ...room, booked: !bookingSnap.empty }; 
+      })
+    );
+
+    setRooms(roomsData);
+  };
+
+  const fetchCities = () => {
+    const q = query(collection(db, "cities"));
+    onSnapshot(q, (snapshot) => {
+      const cityMap = {};
+      snapshot.docs.forEach((el) => {
+        cityMap[el.id] = el.data().cityName;
+      });
+      setCities(cityMap);
     });
-  }
+  };
 
-  return(
+  const handleRoomAction = async (room) => {
+    if (room.booked) {
+      await updateDoc(doc(db, "pgs", room.id), { status: !room.status });
+      Swal.fire(
+        "Success",
+        `Room ${room.status ? "blocked" : "unblocked"} successfully`,
+        "success"
+      );
+
+      setRooms((prev) =>
+        prev.map((r) =>
+          r.id === room.id ? { ...r, status: !r.status } : r
+        )
+      );
+    } else {
+      // Delete
+      Swal.fire({
+        title: "Are you sure?",
+        text: "This room will be permanently deleted!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await deleteDoc(doc(db, "pgs", room.id));
+          Swal.fire("Deleted!", "Room has been deleted.", "success");
+
+          setRooms((prev) => prev.filter((r) => r.id !== room.id));
+        }
+      });
+    }
+  };
+
+  return (
     <>
       <main className="main">
         {/* Page Title */}
-        <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
+        <div
+          className="page-title"
+          data-aos="fade"
+          style={{
+            background: "url('/assets/img/hero-carousel/hero-carousel-3.jpg')",
+            height: "450px"
+          }}
+        >
           <div className="heading">
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
@@ -80,62 +107,73 @@ export function ViewRooms(){
             </div>
           </nav>
         </div>
-        {/* End Page Title */}
+
         {/* Real Estate Section */}
         <section id="real-estate" className="real-estate section">
           <div className="container">
             <div className="row">
-            {data?.map((el,index)=>(
-              <div
-                className="col-xl-4 col-md-6"
-                data-aos="fade-up"
-                data-aos-delay={100}
-              >
-              <div className="card">
-                <img
-                  src={el?.imageUrl}
-                  alt=""
-                  className="img-fluid"
-                />
-              <div className="card-body">
-                <h3 className="text-light">
-                    {el?.title}
-                </h3>  
-                <div className="card-content d-flex flex-column justify-content-center text-center">
-                      <div className="row propery-info">
-                        <div className="col">City</div>
-                        <div className="col">Balcony</div>
-                        <div className="col">Meals</div>
-                        <div className="col">Size</div>
-                        <div className="col">Type</div>
-                        <div className="col">Price</div>
+              {rooms.map((room) => (
+                <div
+                  key={room.id}
+                  className="col-xl-4 col-md-6"
+                  data-aos="fade-up"
+                  data-aos-delay={100}
+                >
+                  <div className="card">
+                    <img
+                      src={room.imageUrl}
+                      alt=""
+                      className="img-fluid"
+                    />
+                    <div className="card-body">
+                      <h3 className="text-light">{room.title}</h3>
+                      <div className="card-content d-flex flex-column justify-content-center text-center">
+                        <div className="row propery-info">
+                          <div className="col">City</div>
+                          <div className="col">Balcony</div>
+                          <div className="col">Meals</div>
+                          <div className="col">Size</div>
+                          <div className="col">Type</div>
+                          <div className="col">Price</div>
+                        </div>
+                        <div className="row">
+                          <div className="col">{cities[room.cityId]}</div>
+                          <div className="col">{room.balcony}</div>
+                          <div className="col">{room.meals}</div>
+                          <div className="col">{room.size}</div>
+                          <div className="col">{room.type}</div>
+                          <div className="col">{room.price}</div>
+                        </div>
                       </div>
-                      <div className="row">
-                        <div className="col">
-                          {cities[el?.cityId]}
-                        </div>  
-                        <div className="col">{el?.balcony}</div>
-                        <div className="col">{el?.meals}</div>
-                        <div className="col">{el?.size}</div>
-                        <div className="col">{el?.type}</div>
-                        <div className="col">{el?.price}</div>
-                      </div>
-                </div>
-              </div>
-             </div>
-             
-             <div className="d-flex justify-content-center mt-3">
-                <button className="btn btn-danger" onClick={()=>deleteRoom(el.id)}>Delete</button>
-             </div>
-            </div>
-            ))}
-          </div>
-        </div>  
-        </section>
-        {/* /Real Estate Section */}
-      </main>
-      {/* Scroll Top */}
+                    </div>
+                  </div>
 
+                  <div className="d-flex justify-content-center mt-3">
+                    <button
+                      className={
+                        room.booked
+                          ? room.status
+                            ? "btn btn-danger"
+                            : "btn btn-success"
+                          : "btn btn-danger"
+                      }
+                      onClick={() => handleRoomAction(room)}
+                    >
+                      {room.booked
+                        ? room.status
+                          ? "Block"
+                          : "Unblock"
+                        : "Delete"}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Scroll Top */}
       <a
         href="#"
         id="scroll-top"
@@ -144,5 +182,5 @@ export function ViewRooms(){
         <i className="bi bi-arrow-up-short" />
       </a>
     </>
-  )
+  );
 }

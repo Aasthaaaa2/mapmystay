@@ -117,9 +117,9 @@ export function AddPg(){
                   <div className="col-11 mt-5 mx-auto">
                     <input
                       type="text"
+                      placeholder="Title"
                       className="form-control" required
                       name="title"
-                      placeholder="Title"
                       value={title}
                       onChange={(e)=>{
                         setTitle(e.target.value)
@@ -130,8 +130,8 @@ export function AddPg(){
                     <input
                       type="number"
                       className="form-control" required
-                      name="size"
                       placeholder="Size"
+                      name="size"
                       value={size}
                       onChange={(e)=>{
                         setSize(e.target.value)
@@ -147,7 +147,7 @@ export function AddPg(){
                         setMeals(e.target.value)
                       }}
                     >
-                      <option selected disabled value={""}>Meal</option>
+                      <option selected disabled value={""}>Select Meal</option>
                       <option>None</option>
                       <option>Breakfast</option>
                       <option>All Meals</option>
@@ -162,7 +162,7 @@ export function AddPg(){
                         setBalcony(e.target.value)
                       }}
                     >
-                      <option selected disabled value={""}>Balcony</option>
+                      <option selected disabled value={""}>Select Balcony</option>
                       <option>Yes</option>
                       <option>No</option>
                     </select>
@@ -176,7 +176,7 @@ export function AddPg(){
                         setType(e.target.value)
                       }}
                     >
-                      <option selected disabled value={""}>Gender</option>
+                      <option selected disabled value={""}>Select Gender</option>
                       <option>Girl</option>
                       <option>Boy</option>
                     </select>

@@ -2,13 +2,19 @@
 import { addDoc, collection, deleteDoc, doc, onSnapshot, query, Timestamp, updateDoc, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { db } from "../../Firebase"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 import { toast } from "react-toastify"
 
 export function ViewBookings(){
   const[data,setData]=useState([])
+  const nav=useNavigate()
   useEffect(()=>{
+    const isLogin = sessionStorage.getItem("isLogin")
+    if (!isLogin) {
+      nav("/login") 
+      return
+    }
     fetchData()
   },[])
 
@@ -25,7 +31,7 @@ export function ViewBookings(){
     })
   }
    const handlePay=(id ,pgname,amt)=>{
-        console.log(id,name);
+        console.log(id,pgname);
         const options = {
             key: "rzp_test_REGDFtTH2ozd7r", 
             amount: amt *100 , 
@@ -107,7 +113,7 @@ export function ViewBookings(){
               <td>{el?.pgOwnerName}</td>
               <td>{el?.pgEmail}</td>
               <td>{el?.pgname}</td>
-              <td>{el?.price}</td>
+              <td>&#8377;{el?.price}</td>
               <td>
                 <td>
                   {el.status ? (

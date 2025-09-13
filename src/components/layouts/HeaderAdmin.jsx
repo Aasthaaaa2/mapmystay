@@ -26,13 +26,13 @@ export function HeaderAdmin(){
   }
   return(
     <>
-      <header id="header" className="header d-flex align-items-center fixed-top" style={{ paddingTop: "4px", paddingBottom: "4px" }}>
+      <header id="header" className="header d-flex align-items-center fixed-top" style={{ paddingTop: "5px", paddingBottom: "5px" }}>
         <div className="container-fluid container-xl">
           <nav className="navbar navbar-expand-xl">
             <div className="container-fluid">
               {/* Logo */}
               <Link to="/admin" className="logo d-flex align-items-center">
-                <h1 className="sitename mb-4 me-5">
+                <h1 className="sitename mb-2">
                   <span>MapMyStay</span>
                 </h1>
               </Link>
@@ -95,7 +95,7 @@ export function HeaderAdmin(){
                       className="text-dark "
                       style={{ fontSize:20,fontWeight: 450, fontFamily: "'Poppins', sans-serif" }}
                     >
-                      Manage Pg Owners
+                      Pg Owners
                     </Link>
                   </li>
 
@@ -105,7 +105,7 @@ export function HeaderAdmin(){
                       className="text-dark "
                       style={{ fontSize:20,fontWeight: 450, fontFamily: "'Poppins', sans-serif" }}
                     >
-                      Manage Users
+                      Users
                     </Link>
                   </li>
 
@@ -115,7 +115,7 @@ export function HeaderAdmin(){
                       className="text-dark "
                       style={{ fontSize:20,fontWeight: 450, fontFamily: "'Poppins', sans-serif" }}
                     >
-                      View Rooms
+                      Rooms
                     </Link>
                   </li>
 
@@ -125,7 +125,7 @@ export function HeaderAdmin(){
                       className="text-dark "
                       style={{ fontSize:20,fontWeight: 450, fontFamily: "'Poppins', sans-serif" }}
                     >
-                      View Bookings
+                      Bookings
                     </Link>
                   </li>
 
@@ -135,7 +135,7 @@ export function HeaderAdmin(){
                       className="text-dark "
                       style={{ fontSize:20,fontWeight: 450, fontFamily: "'Poppins', sans-serif" }}
                     >
-                      View Queries
+                      Queries
                     </Link>
                   </li>
 

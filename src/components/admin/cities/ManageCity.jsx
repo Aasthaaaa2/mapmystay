@@ -74,7 +74,9 @@ export function ManageCity(){
               <td>{index+1}</td>
               <td>{el?.cityName}</td>
               <td>
-                <img src={el?.imageUrl} style={{height:"100px", width:"100px"}}/>
+                <a href={el?.imageUrl} target="_blank">
+                  <img src={el?.imageUrl} style={{height:"100px", width:"100px"}}/>
+                </a>
               </td>
               <td>
                 <Link className="btn btn-success" to={"/admin/city/update/"+el?.id}>Edit</Link>
@@ -84,12 +86,6 @@ export function ManageCity(){
           ))}
         </tbody>
       </table>
-      {/* <select>
-        <option>Choose city</option>
-        {data?.map((el,index)=>(
-            <option value={el.id}>{el.cityName}</option>
-        ))}
-      </select> */}
     </div>
     </>
   )

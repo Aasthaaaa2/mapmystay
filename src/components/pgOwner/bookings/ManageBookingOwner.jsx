@@ -83,7 +83,7 @@ export function ManageBookingOwner(){
               <td>{el?.userName}</td>
               <td>{el?.userEmail}</td>
               <td>{el?.pgname}</td>
-              <td>{el?.price}</td>
+              <td>&#8377;{el?.price}</td>
               <td>
                 <Link
                   className={`btn ${el.status ? "btn-success" : "btn-danger"}`}

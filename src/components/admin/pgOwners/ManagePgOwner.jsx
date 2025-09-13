@@ -80,7 +80,7 @@ export function ManagePgOwner(){
               <td>{el?.email}</td>
               <td>{el?.contact}</td>
               <td>
-                <Link className="btn btn-danger" onClick={()=>{changeStatus(el?.id,el?.status)}}>{el.status?"Change Status":"Status:false"}</Link>
+                <Link className={`btn ${el?.status ? "btn-success" : "btn-danger"}`} onClick={()=>{changeStatus(el?.id,el?.status)}}>{el.status?"Active":"Inactive"}</Link>
               </td>
             </tr>
           ))}

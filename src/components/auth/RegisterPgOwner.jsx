@@ -66,37 +66,43 @@ export function RegisterPgOwner(){
         >
           <div className="row gy-4">
             <div className="col-md-12">
+              <label for="name" className="ms-1 mb-1 mt-1">Name</label>
               <input
                 type="text"
                 name="name"
+                id="name"
                 className="form-control"
-                placeholder="Name"
                 required=""
                 value={name}
-                onChange={(e)=>{
-                  setName(e.target.value)
-                }}
+                onChange={(e)=>setName(e.target.value.replace(/[^A-Za-z\s]/g, ""))}
               />
             </div>
             <div className="col-md-12">
+              <label for="email" className="ms-1 mb-1 mt-1">Email</label>
               <input
                 type="email"
                 className="form-control"
                 name="email"
-                placeholder="Email"
+                id="email"
                 required=""
                 value={email}
-                onChange={(e)=>{
-                  setEmail(e.target.value)
-                }}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setEmail(val);
+                  const emailRegex =/^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                  if (val === "" || emailRegex.test(val)) {
+                    setEmail(val);
+                  }
+              }}
               />
             </div>
             <div className="col-md-12">
+              <label for="contact" className="ms-1 mb-1 mt-1">Contact</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="contact"
-                placeholder="Contact"
+                id="contact"
                 required=""
                 minLength={10}
                 maxLength={10}
@@ -107,12 +113,15 @@ export function RegisterPgOwner(){
               />
             </div>
             <div className="col-md-12">
+              <label for="password" className="ms-1 mb-1 mt-1">Set password</label>
               <input
                 type="password"
                 className="form-control"
                 name="password"
-                placeholder="Set password"
+                id="password"
                 required=""
+                minLength={6}
+                maxLength={6}
                 value={password}
                 onChange={(e)=>{
                   setPassword(e.target.value)
@@ -120,11 +129,12 @@ export function RegisterPgOwner(){
               />
             </div>
             <div className="col-md-12">
+              <label for="address" className="ms-1 mb-1 mt-1">Address</label>
               <input
                 type="text"
                 className="form-control"
                 name="address"
-                placeholder="Address"
+                id="address"
                 required=""
                 value={address}
                 onChange={(e)=>{
@@ -132,23 +142,6 @@ export function RegisterPgOwner(){
                 }}
               />
             </div>
-             {/* <div className="col-md-12">
-              <select
-                className="form-control"
-                name="city"
-                required=""
-                value={city}
-                onChange={(e)=>{
-                  setCity(e.target.value)
-                }}>
-                  <option value="">--Select City--</option>
-                  <option value="jalandhar">Jalandhar</option>
-                  <option value="mohali">Mohali</option>
-                  <option value="ludhiana">Ludhiana</option>
-                  <option value="hoshiarpur">Hoshiarpur</option>
-                  <option value="phagwara">Phagwara</option>
-                </select>
-            </div> */}
             <div className="col-md-12 ">
               <div className="loading">Loading</div>
               <div className="error-message" />

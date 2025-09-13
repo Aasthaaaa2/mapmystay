@@ -39,7 +39,7 @@ export function Login(){
         nav("/")
       }
     } else{
-      toast.error("Account is Blocked")
+      toast.error("Your account is blocked, please contact admin.")
     }
   }
   const googleSignUp=()=>{

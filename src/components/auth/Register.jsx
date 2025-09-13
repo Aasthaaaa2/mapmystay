@@ -65,37 +65,43 @@ export function Register(){
         >
           <div className="row gy-4">
             <div className="col-md-12">
+              <label for="name" className="ms-1 mb-1 mt-1">Name</label>
               <input
                 type="text"
                 name="name"
+                id="name"
                 className="form-control"
-                placeholder="Name"
                 required=""
                 value={name}
-                onChange={(e)=>{
-                  setName(e.target.value)
-                }}
+                onChange={(e)=>setName(e.target.value.replace(/[^A-Za-z\s]/g, ""))}
               />
             </div>
             <div className="col-md-12">
+              <label for="email" className="ms-1 mb-1 mt-1">Email</label>
               <input
                 type="email"
                 className="form-control"
                 name="email"
-                placeholder="Email"
+                id="email"
                 required=""
                 value={email}
-                onChange={(e)=>{
-                  setEmail(e.target.value)
-                }}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setEmail(val);
+                  const emailRegex =/^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                  if (val === "" || emailRegex.test(val)) {
+                    setEmail(val);
+                  }
+              }}
               />
             </div>
             <div className="col-md-12">
+              <label for="contact" className="ms-1 mb-1 mt-1">Contact</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="contact"
-                placeholder="Contact"
+                id="contact"
                 required=""
                 minLength={10}
                 maxLength={10}
@@ -106,12 +112,15 @@ export function Register(){
               />
             </div>
             <div className="col-md-12">
+              <label for="password" className="ms-1 mb-1 mt-1">Set password</label>
               <input
                 type="password"
                 className="form-control"
                 name="password"
-                placeholder="Set password"
+                id="password"
                 required=""
+                minLength={6}
+                maxLength={6}
                 value={password}
                 onChange={(e)=>{
                   setPassword(e.target.value)
@@ -119,11 +128,12 @@ export function Register(){
               />
             </div>
             <div className="col-md-12">
+              <label for="age" className="ms-1 mb-1 mt-1">Age</label>
               <input
                 type="number"
                 className="form-control"
                 name="age"
-                placeholder="Age"
+                id="age"
                 required=""
                 value={age}
                 onChange={(e)=>{
@@ -132,6 +142,7 @@ export function Register(){
               />
             </div>
             <div className="row mt-4">
+              
               <div className="col-md-2">
                 <input
                   type="radio"

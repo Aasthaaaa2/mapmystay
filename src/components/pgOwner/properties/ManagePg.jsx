@@ -85,9 +85,11 @@ export function ManagePg(){
               <td>{el?.balcony}</td>
               <td>{el?.type}</td>
               <td>{el?.meals}</td>
-              <td>{el?.price}</td>
+              <td>&#8377;{el?.price}</td>
               <td>
-                <img src={el?.imageUrl} style={{height:"100px", width:"100px"}}/>
+                <a href={el?.imageUrl} target="_blank">
+                  <img src={el?.imageUrl} style={{height:"100px", width:"100px"}}/>
+                </a>
               </td>
               <td>
                 <Link className="btn btn-success" to={"/pgOwner/pg/update/"+el.id}>Edit</Link>

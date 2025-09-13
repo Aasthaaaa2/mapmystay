@@ -132,7 +132,7 @@ export function Contact(){
                         className="form-control" required
                         placeholder="Your Name"
                         value={name}
-                        onChange={(e)=>setName(e.target.value)}
+                        onChange={(e)=>setName(e.target.value.replace(/[^A-Za-z\s]/g, ""))}
                       />
                     </div>
                     <div className="col-md-6 ">
@@ -142,7 +142,14 @@ export function Contact(){
                         name="email"
                         placeholder="Your Email"
                         value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setEmail(val);
+                          const emailRegex =/^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                          if (val === "" || emailRegex.test(val)) {
+                            setEmail(val);
+                          }
+                        }}
                       />
                     </div>
                     <div className="col-md-12">
