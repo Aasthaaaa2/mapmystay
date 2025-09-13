@@ -37,10 +37,10 @@ export function Services(){
                 data-aos-delay={100}
               >
                 <div className="service-item  position-relative">
+                  <Link to="/services">
                   <div className="icon">
                     <i className="bi bi-activity" />
                   </div>
-                  <Link to="/services">
                     <h3>Verified PG Listings</h3>
                   </Link>
                   <p className="fs-6">
@@ -55,10 +55,10 @@ export function Services(){
                 data-aos-delay={200}
               >
                 <div className="service-item position-relative">
+                  <Link to="/services">
                   <div className="icon">
                     <i className="bi bi-broadcast" />
                   </div>
-                  <Link to="/services">
                     <h3>Online Booking & Secure Payments</h3>
                   </Link>
                   <p className="fs-6">
@@ -73,10 +73,10 @@ export function Services(){
                 data-aos-delay={300}
               >
                 <div className="service-item position-relative">
+                  <Link to="/services" >
                   <div className="icon">
                     <i className="bi bi-easel" />
                   </div>
-                  <Link to="/services" >
                     <h3>Personalized Booking Dashboard</h3>
                   </Link>
                   <p className="fs-6">
@@ -91,10 +91,10 @@ export function Services(){
                 data-aos-delay={400}
               >
                 <div className="service-item position-relative">
+                  <Link to="/services" >
                   <div className="icon">
                     <i className="bi bi-bounding-box-circles" />
                   </div>
-                  <Link to="/services" >
                     <h3>PG Owner Property Management</h3>
                   </Link>
                   <p className="fs-6">
@@ -109,10 +109,10 @@ export function Services(){
                 data-aos-delay={500}
               >
                 <div className="service-item position-relative">
+                  <Link to="/services" >
                   <div className="icon">
                     <i className="bi bi-calendar4-week" />
                   </div>
-                  <Link to="/services" >
                     <h3>Admin Control Panel</h3>
                   </Link>
                   <p className="fs-6">
@@ -127,10 +127,10 @@ export function Services(){
                 data-aos-delay={600}
               >
                 <div className="service-item position-relative">
+                  <Link to="/services" >
                   <div className="icon">
                     <i className="bi bi-chat-square-text" />
                   </div>
-                  <Link to="/services" >
                     <h3>24/7 Support Assistance</h3>
                   </Link>
                   <p className="fs-6">

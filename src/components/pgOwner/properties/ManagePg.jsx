@@ -61,8 +61,8 @@ export function ManagePg(){
         </div>
       </div>
     </div>
-    <div className="container my-5">
-      <table className="table table-bordered table-striped table-hover">
+    <div className="container my-5 table-responsive">
+      <table className="table table-bordered table-striped table-hover ">
         <thead className="table-dark">
           <tr>
             <th>S.NO.</th>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function About(){
 return(
 <>
@@ -42,28 +44,28 @@ return(
             <p>Our Goal is to offer:</p>
             <ul>
               <li>
-                <i className="bi bi-check-circle" />{" "}
-                <span>
-                  A centralized system for managing PG listings.
-                </span>
+                  <i className="bi bi-check-circle" />{" "}
+                  <span>
+                    A centralized system for managing PG listings.
+                  </span>
               </li>
               <li>
-                <i className="bi bi-check-circle" />{" "}
-                <span>
-                  A smooth and quick search & booking experience for users.
-                </span>
+                  <i className="bi bi-check-circle" />{" "}
+                  <span>
+                    A smooth and quick search & booking experience for users.
+                  </span>
               </li>
               <li>
-                <i className="bi bi-check-circle" />{" "}
-                <span>
-                  Efficient tools for PG owners to handle rooms and bookings.
-                </span>
+                  <i className="bi bi-check-circle" />{" "}
+                  <span>
+                    Efficient tools for PG owners to handle rooms and bookings.
+                  </span>
               </li>
               <li>
-                <i className="bi bi-check-circle" />{" "}
-                <span>
-                  Administrative control to ensure data integrity and platform security.
-                </span>
+                  <i className="bi bi-check-circle" />{" "}
+                  <span>
+                    Administrative control to ensure data integrity and platform security.
+                  </span>
               </li>
             </ul>
           </div>
@@ -200,9 +202,9 @@ return(
               <i className="bi bi-easel flex-shrink-0" />
               <div>
                 <h4>
-                  <a href="" className="stretched-link">
+                  <Link to="/about">
                     Explore PG Listings
-                  </a>
+                  </Link>
                 </h4>
                 <p>
                   Find verified PGs in your city with accurate details and real images.
@@ -218,9 +220,9 @@ return(
               <i className="bi bi-patch-check flex-shrink-0" />
               <div>
                 <h4>
-                  <a href="" className="stretched-link">
+                  <Link to="/about">
                     Seamless Booking experience
-                  </a>
+                  </Link>
                 </h4>
                 <p>
                   Instant online bookings with transparent pricing and payment options.
@@ -236,9 +238,9 @@ return(
               <i className="bi bi-brightness-high flex-shrink-0" />
               <div>
                 <h4>
-                  <a href="" className="stretched-link">
+                  <Link to="/about">
                     Manage your Bookings
-                  </a>
+                  </Link>
                 </h4>
                 <p>
                   Track booking status, room availability, and payments on your dashboard.
@@ -254,9 +256,9 @@ return(
               <i className="bi bi-brightness-high flex-shrink-0" />
               <div>
                 <h4>
-                  <a href="" className="stretched-link">
+                  <Link to="/about">
                     PG Owner Dashboard
-                  </a>
+                  </Link>
                 </h4>
                 <p>
                   Efficient tools for owners to manage room listings, bookings, and updates.

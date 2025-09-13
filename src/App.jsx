@@ -17,7 +17,6 @@ import { AddPg } from "./components/pgOwner/properties/AddPg"
 import { ManageCity } from "./components/admin/cities/ManageCity"
 import { ManagePg } from "./components/pgOwner/properties/ManagePg"
 import { ManagePgOwner } from "./components/admin/pgOwners/ManagePgOwner"
-import { ManageUsers } from "./components/admin/users/ManageUsers"
 import { ViewCity } from "./components/users/pages/ViewCity"
 import { ViewRooms } from "./components/admin/pgRooms/ViewRooms"
 import { UpdateCity } from "./components/admin/cities/UpdateCity"
@@ -33,6 +32,7 @@ import { ViewBookingsAdmin } from "./components/admin/bookings/ViewBookingsAdmin
 import { DashboardAdmin } from "./components/admin/dashboard/DashboardAdmin"
 import { DashboardPgOwner } from "./components/pgOwner/dashboard/DashboardPgOwner"
 import { ViewQueries } from "./components/admin/queries/ViewQueries"
+import { ManageUsers } from "./components/admin/users/ManageUsers"
 
 function App() {
   return (

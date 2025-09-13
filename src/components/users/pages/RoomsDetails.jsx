@@ -105,7 +105,7 @@ export function RoomsDetails(){
                   />
                 </div>
                 <div className="col-md-6">
-                  <h2 className="mb-3">{pg?.title}</h2>
+                  <h2 className="mb-3 mt-2 ms-2">{pg?.title}</h2>
 
                   <ul className="list-group list-group-flush mb-3">
                   <li className="list-group-item">
@@ -124,7 +124,7 @@ export function RoomsDetails(){
                     <b>Price:</b> ₹{pg?.price}
                   </li>
                 </ul>
-                <button className="btn btn-success btn-lg" onClick={()=>{
+                <button className="btn btn-success btn-lg ms-2" onClick={()=>{
                   handleBookingRequest(pg?.pgOwnerName,pg?.pgOwnerId,pg?.pgEmail,pg?.title,pg?.price,pg?.type)
                 }}>
                   Request Booking
