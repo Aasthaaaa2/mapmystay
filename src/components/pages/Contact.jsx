@@ -2,7 +2,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { useState } from "react"
 import { toast } from "react-toastify"
 import { db } from "../Firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
  
 export function Contact(){
   const [name,setName]=useState("");
@@ -50,16 +50,6 @@ export function Contact(){
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <a href="index.html">Home</a>
-                </li>
-                <li className="current">Contact</li>
-              </ol>
-            </div>
-          </nav>
         </div>
         {/* End Page Title */}
         {/* Contact Section */}

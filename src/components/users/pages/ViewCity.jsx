@@ -31,16 +31,6 @@ export function ViewCity(){
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="current">View Cities</li>
-              </ol>
-            </div>
-          </nav>
         </div>
         {/* End Page Title */}
         {/* Real Estate Section */}

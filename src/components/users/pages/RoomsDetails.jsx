@@ -81,16 +81,6 @@ export function RoomsDetails(){
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="current">Room Details</li>
-              </ol>
-            </div>
-          </nav>
         </div>
         {/* End Page Title */}
         {/* Real Estate Section */}

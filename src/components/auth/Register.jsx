@@ -96,21 +96,23 @@ export function Register(){
               />
             </div>
             <div className="col-md-12">
-              <label for="contact" className="ms-1 mb-1 mt-1">Contact</label>
+              <label htmlFor="contact" className="ms-1 mb-1 mt-1">Contact</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 name="contact"
                 id="contact"
-                required=""
-                minLength={10}
-                maxLength={10}
+                required
                 value={contact}
-                onChange={(e)=>{
-                  setContact(e.target.value)
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (/^\d{0,10}$/.test(value)) {
+                    setContact(value);
+                  }
                 }}
               />
             </div>
+
             <div className="col-md-12">
               <label for="password" className="ms-1 mb-1 mt-1">Set password</label>
               <input

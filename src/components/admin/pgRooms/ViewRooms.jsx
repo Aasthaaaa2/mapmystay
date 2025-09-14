@@ -96,16 +96,6 @@ export function ViewRooms() {
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="current">View Rooms</li>
-              </ol>
-            </div>
-          </nav>
         </div>
 
         {/* Real Estate Section */}

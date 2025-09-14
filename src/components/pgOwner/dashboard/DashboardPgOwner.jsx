@@ -42,16 +42,6 @@ export function DashboardPgOwner(){
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <Link to="/pgOwner" >Home</Link>
-                </li>
-                <li className="current">Pg Owner</li>
-              </ol>
-            </div>
-          </nav>
         </div>
         {/* End Page Title */}
 

@@ -15,16 +15,6 @@ export function Services(){
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <Link to="/" >Home</Link>
-                </li>
-                <li className="current">Services</li>
-              </ol>
-            </div>
-          </nav>
         </div>
         {/* End Page Title */}
         {/* Services Section */}

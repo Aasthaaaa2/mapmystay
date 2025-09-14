@@ -50,16 +50,6 @@ export function ContactOwner(){
               </div>
             </div>
           </div>
-          <nav className="breadcrumbs">
-            <div className="container">
-              <ol>
-                <li>
-                  <a href="index.html">Home</a>
-                </li>
-                <li className="current">Contact</li>
-              </ol>
-            </div>
-          </nav>
         </div>
         {/* End Page Title */}
         {/* Contact Section */}
