@@ -76,25 +76,29 @@ export function Register(){
                 onChange={(e)=>setName(e.target.value.replace(/[^A-Za-z\s]/g, ""))}
               />
             </div>
+
             <div className="col-md-12">
-              <label for="email" className="ms-1 mb-1 mt-1">Email</label>
+              <label htmlFor="email" className="ms-1 mb-1 mt-1">Email</label>
               <input
                 type="email"
                 className="form-control"
                 name="email"
                 id="email"
-                required=""
+                required
                 value={email}
-                onChange={(e) => {
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={(e) => {
                   const val = e.target.value;
-                  setEmail(val);
-                  const emailRegex =/^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-                  if (val === "" || emailRegex.test(val)) {
-                    setEmail(val);
+                  const emailRegex = /^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                    if (!emailRegex.test(val)) {
+                    setEmailError("Invalid email address!");
+                  } else {
+                    setEmailError("");
                   }
-              }}
+                }}
               />
             </div>
+          
             <div className="col-md-12">
               <label htmlFor="contact" className="ms-1 mb-1 mt-1">Contact</label>
               <input

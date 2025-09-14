@@ -78,37 +78,40 @@ export function RegisterPgOwner(){
               />
             </div>
             <div className="col-md-12">
-              <label for="email" className="ms-1 mb-1 mt-1">Email</label>
+              <label htmlFor="email" className="ms-1 mb-1 mt-1">Email</label>
               <input
                 type="email"
                 className="form-control"
                 name="email"
                 id="email"
-                required=""
+                required
                 value={email}
-                onChange={(e) => {
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={(e) => {
                   const val = e.target.value;
-                  setEmail(val);
-                  const emailRegex =/^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-                  if (val === "" || emailRegex.test(val)) {
-                    setEmail(val);
+                  const emailRegex = /^[\w.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                    if (!emailRegex.test(val)) {
+                    setEmailError("Invalid email address!");
+                  } else {
+                    setEmailError("");
                   }
-              }}
+                }}
               />
-            </div>
-            <div className="col-md-12">
-              <label for="contact" className="ms-1 mb-1 mt-1">Contact</label>
+          </div>
+          <div className="col-md-12">
+              <label htmlFor="contact" className="ms-1 mb-1 mt-1">Contact</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 name="contact"
                 id="contact"
-                required=""
-                minLength={10}
-                maxLength={10}
+                required
                 value={contact}
-                onChange={(e)=>{
-                  setContact(e.target.value)
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (/^\d{0,10}$/.test(value)) {
+                    setContact(value);
+                  }
                 }}
               />
             </div>
