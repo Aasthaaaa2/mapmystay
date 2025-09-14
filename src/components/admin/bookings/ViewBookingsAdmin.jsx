@@ -69,7 +69,7 @@ export function ViewBookingsAdmin(){
                       Payment Completed
                     </span>
                   ) : (
-                    <span className="btn btn-success fs-6">
+                    <span className="btn btn-danger fs-6">
                       Payment Pending
                     </span>
                   )}

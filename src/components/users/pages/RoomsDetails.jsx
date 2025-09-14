@@ -98,11 +98,9 @@ export function RoomsDetails(){
           <div className="container">
               <div className="row mb-5" data-aos="fade-up" data-aos-delay={100}>
                 <div className="col-md-6 d-flex justify-content-center align-items-center">
-                  <img src={pg?.imageUrl}
-                  alt={pg?.title}
-                  className="img-fluid rounded shadow"
-                  style={{maxHeight: "400px",objectFit:"cover"}}
-                  />
+                  <a href={pg?.imageUrl} target="_blank">
+                   <img src={pg?.imageUrl} className="img-fluid rounded shadow" style={{height:"400px", width:"400px"}}/>
+                  </a>
                 </div>
                 <div className="col-md-6">
                   <h2 className="mb-3 mt-2 ms-2">{pg?.title}</h2>

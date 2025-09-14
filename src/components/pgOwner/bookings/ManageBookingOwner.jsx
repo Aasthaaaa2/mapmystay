@@ -97,7 +97,7 @@ export function ManageBookingOwner(){
                   {el.paymentStatus ? (
                     <span className="btn btn-success fs-6">Completed</span>
                   ) : (
-                    <span className="btn btn-warning text-dark fs-6 ">Pending</span>
+                    <span className="btn btn-danger text-light fs-6 ">Pending</span>
                   )}
                 </td>
               </td>

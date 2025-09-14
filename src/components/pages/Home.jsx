@@ -47,7 +47,7 @@ export function Home(){
             <div>
               <h5><i>Qwerty,</i></h5>
               <h2>
-                <span>247</span> Vitra Road Three
+                <span>259</span> Vitra Road Three
               </h2>
               <Link to="/cities" className="btn-get-started">
                 Rent | &#8377;8000
