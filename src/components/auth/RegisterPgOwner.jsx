@@ -101,7 +101,7 @@ export function RegisterPgOwner(){
           <div className="col-md-12">
               <label htmlFor="contact" className="ms-1 mb-1 mt-1">Contact</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="contact"
                 id="contact"
