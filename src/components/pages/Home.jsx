@@ -1,0 +1,192 @@
+import { Link } from "react-router-dom"
+
+export function Home(){
+  return(
+    <>
+      <main className="main">
+        <section id="hero" className="hero section dark-background">
+      <div
+        id="hero-carousel"
+        className="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval={5000}
+      >
+        <div className="carousel-item active">
+          <img src="/assets/img/hero-carousel/hero-carousel-1.jpg" alt="" />
+          <div className="carousel-container">
+            <div>
+              <h5><i>Comfortably Accommodation,</i></h5>
+              <h2>
+                <span>204</span> Olive Road Two
+              </h2>
+              <Link to="/cities" className="btn-get-started">
+                Rent | &#8377;12000
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="carousel-item">
+          <img src="/assets/img/hero-carousel/hero-carousel-2.jpg" alt="" />
+          <div className="carousel-container">
+            <div>
+              <h5><i>Homely Feel,</i></h5>
+              <h2>
+                <span>247</span> Venda Road Five
+              </h2>
+              <Link to="/cities" className="btn-get-started">
+                Rent | &#8377;10000
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="carousel-item">
+          <img src="/assets/img/hero-carousel/hero-carousel-3.jpg" alt="" />
+          <div className="carousel-container">
+            <div>
+              <h5><i>Qwerty,</i></h5>
+              <h2>
+                <span>259</span> Vitra Road Three
+              </h2>
+              <Link to="/cities" className="btn-get-started">
+                Rent | &#8377;8000
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <ol className="carousel-indicators">
+          <li data-bs-target="#hero-carousel" data-bs-slide-to="0" className="active"></li>
+          <li data-bs-target="#hero-carousel" data-bs-slide-to="1"></li>
+          <li data-bs-target="#hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+      </div>
+</section>
+
+        {/* Services Section */}
+
+        <section id="services" className="services section">
+          {/* Section Title */}
+          <div className="container section-title" data-aos="fade-up">
+            <h2>Our Services</h2>
+            <p>
+              At MapMyStay, We aim to bridge the gap between PG Owners and Tenants through a smart, easy-to-use, and reliable online platform.
+            </p>
+          </div>
+          {/* End Section Title */}
+          <div className="container">
+            <div className="row gy-4">
+              <div
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={100}
+              >
+                <div className="service-item  position-relative">
+                  <div className="icon">
+                    <i className="bi bi-activity" />
+                  </div>
+                  <Link to="/"><h3>Verified PG Listings</h3></Link>
+                  <p className="fs-6">
+                    Access a curated collection of PG accommodations with detailed property descriptions, real images, amenities, and verified information to ensure trust and transparency.
+                  </p>
+                </div>
+              </div>
+              {/* End Service Item */}
+              <div
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={200}
+              >
+                <div className="service-item position-relative">
+                  <div className="icon">
+                    <i className="bi bi-broadcast" />
+                  </div>
+                  <Link to="/"><h3>Online Booking & Secure Payments</h3></Link>
+                  <p className="fs-6">
+                    Enjoy a fast and safe booking process through our platform with real-time availability checks and secure payment gateways ensuring smooth transactions.
+                  </p>
+                </div>
+              </div>
+              {/* End Service Item */}
+              <div
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={300}
+              >
+                <div className="service-item position-relative">
+                  <div className="icon">
+                    <i className="bi bi-easel" />
+                  </div>
+                  <Link to="/"><h3>Personalized Booking Dashboard</h3></Link>
+                  <p className="fs-6">
+                    Users get a personalized dashboard to manage their bookings, view payment history, check room availability, and keep track of stay details in one place.
+                  </p>
+                </div>
+              </div>
+              {/* End Service Item */}
+              <div
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={400}
+              >
+                <div className="service-item position-relative">
+                  <div className="icon">
+                    <i className="bi bi-bounding-box-circles" />
+                  </div>
+                  <Link to="/"><h3>PG Owner Property Management</h3></Link>
+                  <p className="fs-6">
+                    PG owners have a dedicated portal where they can add or update PG listings, manage room availability, handle tenant bookings, and monitor payment statuses efficiently.
+                  </p>
+                </div>
+              </div>
+              {/* End Service Item */}
+              <div
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={500}
+              >
+                <div className="service-item position-relative">
+                  <div className="icon">
+                    <i className="bi bi-calendar4-week" />
+                  </div>
+                  <Link to="/"><h3>Admin Control Panel</h3></Link>
+                  <p className="fs-6">
+                    Admins can manage city-wise PG listings, oversee PG owner registrations, verify users, and ensure smooth platform operations with backend management tools.
+                  </p>
+                </div>
+              </div>
+              {/* End Service Item */}
+              <div
+                className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={600}
+              >
+                <div className="service-item position-relative">
+                  <div className="icon">
+                    <i className="bi bi-chat-square-text" />
+                  </div>
+                  <Link to="/"><h3>24/7 Support Assistance</h3></Link>
+                  <p className="fs-6">
+                    Our support team is always available to assist with queries related to bookings, technical support, and platform navigation.
+                  </p>
+                </div>
+              </div>
+              {/* End Service Item */}
+            </div>
+          </div>
+        </section>
+
+        {/* /Services Section */}
+      </main>
+      {/* Scroll Top */}
+      <a
+        href="#"
+        id="scroll-top"
+        className="scroll-top d-flex align-items-center justify-content-center"
+      >
+        <i className="bi bi-arrow-up-short" />
+      </a>
+    </>
+  )
+}

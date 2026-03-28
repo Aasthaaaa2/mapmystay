@@ -1,0 +1,118 @@
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { db } from "../../Firebase";
+
+export function CityRooms(){
+  const {cityId} =useParams();
+  const [data,setData]=useState([]);
+  const navigate=useNavigate();
+
+  useEffect(()=>{
+    fetchData()
+  },[cityId])
+
+  const fetchData=()=>{
+    let q=query(collection(db,"pgs"),where("cityId","==",cityId))
+    onSnapshot(q,(pgCol)=>{
+      let pgData=pgCol.docs.map((el)=>{
+        return{...el.data(),id:el.id};
+      })
+      setData(pgData)
+    })
+  }
+  return(
+    <>
+      <main className="main">
+        {/* Page Title */}
+        <div className="page-title" data-aos="fade" style={{background:"url('/assets/img/hero-carousel/hero-carousel-3.jpg')",height:"450px"}}>
+          <div className="heading">
+            <div className="container">
+              <div className="row d-flex justify-content-center text-center">
+                <div className="col-lg-8">
+                  <h1 className="text-light mt-5 pt-4">View Rooms</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End Page Title */}
+        {/* Real Estate Section */}
+        <section id="real-estate" className="real-estate section">
+          <div className="container">
+            <div className="row">
+            {data?.map((el,index)=>(
+              <div
+                className="col-xl-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={100}
+              >
+              <div className="card">
+                <img
+                  src={el?.imageUrl}
+                  alt=""
+                  className="img-fluid"
+                />
+              <div className="card-body">
+                <h3 className="text-light">
+                    {el?.title}
+                </h3>  
+                <div className="card-content d-flex flex-column justify-content-center text-center">
+                      <div className="row propery-info">
+                        <div className="col">Balcony</div>
+                        <div className="col">Meals</div>
+                        <div className="col">Size</div>
+                        <div className="col">Type</div>
+                        <div className="col">Price</div>
+                      </div>
+                      <div className="row">
+                        <div className="col">{el?.balcony}</div>
+                        <div className="col">{el?.meals}</div>
+                        <div className="col">{el?.size}</div>
+                        <div className="col">{el?.type}</div>
+                        <div className="col">{el?.price}</div>
+                      </div>
+                    </div>
+              </div>
+             </div>
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            {el.status ? (
+               <button
+                className="btn btn-success"
+                onClick={() => navigate(`/roomDetails/${el?.id}`)}
+              >
+                VIEW
+              </button>
+            ) : (
+              <button className="btn btn-secondary" disabled>
+                Currently Unavailable
+              </button>
+            )}
+          </div>
+
+            </div>
+            ))}
+            {data.length === 0 && (
+              <p className="text-center mt-4">
+                No PGS available in this city.
+              </p>
+            )}
+
+            
+          </div>
+        </div>  
+        </section>
+        {/* /Real Estate Section */}
+      </main>
+      {/* Scroll Top */}
+
+      <a
+        href="#"
+        id="scroll-top"
+        className="scroll-top d-flex align-items-center justify-content-center"
+      >
+        <i className="bi bi-arrow-up-short" />
+      </a>
+    </>
+  )
+}
